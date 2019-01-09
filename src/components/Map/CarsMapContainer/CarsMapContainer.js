@@ -6,11 +6,12 @@ export default class CarsMapContainer extends Component {
     super(props);
     this.state = {
       cars: [],
-      location: this.props.location
+      location: this.props.location,
+      activeMarker: null
     };
   }
 
-  /* check if location from props changed and rerender if true */
+  /* check if location from props changed and re-render if true */
   componentDidUpdate(prevProps) {
     if (prevProps.location !== this.props.location) {
       this.setState({
@@ -18,6 +19,10 @@ export default class CarsMapContainer extends Component {
       });
     }
   }
+
+  closeOtherMarkers = uid => {
+    this.setState({ activeMarker: uid });
+  };
 
   render() {
     return (
@@ -29,6 +34,8 @@ export default class CarsMapContainer extends Component {
           loadingElement={<div style={{ height: `100%` }} />}
           containerElement={<div style={{ height: `600px`, width: `100%` }} />}
           mapElement={<div style={{ height: `100%` }} />}
+          activeMarker={this.state.activeMarker}
+          closeOtherMarkers={this.closeOtherMarkers}
         />
       </Fragment>
     );

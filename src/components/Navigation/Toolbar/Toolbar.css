@@ -1,3 +1,8 @@
 .Toolbar {
   background-color: #000;
 }
+
+.Brand {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}

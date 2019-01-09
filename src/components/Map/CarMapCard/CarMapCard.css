@@ -1,0 +1,7 @@
+.Card {
+  max-width: 323px;
+}
+
+.Card button {
+  float: right;
+}
