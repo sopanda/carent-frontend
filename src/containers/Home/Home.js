@@ -1,7 +1,30 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
+import CarsMapContainer from "../../components/Map/CarsMapContainer/CarsMapContainer";
+import GeoLocation from "../../components/GeoLocation/GeoLocation";
 
 export default class Home extends Component {
+  constructor() {
+    super();
+    //default Lviv
+    this.state = {
+      latitude: 49.83826,
+      longitude: 24.02324
+    };
+  }
+
+  /*getting data about position from child component*/
+  coordsHandler = (latitude, longitude) => {
+    this.setState({ latitude, longitude });
+  };
+
   render() {
-    return <div>Home</div>;
+    return (
+      <Fragment>
+        <GeoLocation userLocation={this.coordsHandler} />
+        <CarsMapContainer
+          location={{ lat: this.state.latitude, lng: this.state.longitude }}
+        />
+      </Fragment>
+    );
   }
 }

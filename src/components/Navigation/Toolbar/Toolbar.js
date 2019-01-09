@@ -35,12 +35,17 @@ class Toolbar extends Component {
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className={classes.List + " ml-auto"} navbar>
             <NavItem>
-              <NavLink tag={navLink} to="/" exact className={classes.Link}>
+              <NavLink tag={navLink} to="/about" exact className={classes.Link}>
                 About
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink tag={navLink} to="/" exact className={classes.Link}>
+              <NavLink
+                tag={navLink}
+                to="/contact"
+                exact
+                className={classes.Link}
+              >
                 Contact
               </NavLink>
             </NavItem>
