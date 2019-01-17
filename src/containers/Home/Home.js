@@ -5,14 +5,14 @@ import GeoLocation from "../../components/GeoLocation/GeoLocation";
 export default class Home extends Component {
   constructor() {
     super();
-    //default Lviv
     this.state = {
+      /* Lviv coordination */
       latitude: 49.83826,
       longitude: 24.02324
     };
   }
 
-  /*getting data about position from child component*/
+  /*getting data about user position from child component*/
   coordsHandler = (latitude, longitude) => {
     this.setState({ latitude, longitude });
   };

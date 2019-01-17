@@ -1,0 +1,53 @@
+.RegisterPage {
+  background-color: #001220;
+  width: 100%;
+  height: 100vh;
+}
+
+.RegisterPage_Wrapper {
+  max-width: 450px;
+  width: 100%;
+}
+
+.RegisterPage_Wrapper h2 {
+  text-align: center;
+  margin-bottom: 19px;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: #3de6af;
+}
+
+.RegisterPage_Input,
+.RegisterPage_Input:focus {
+  background-color: #082336;
+  border-color: #48a1e3;
+  max-height: 110px;
+  height: 100%;
+  font-size: 16px;
+  color: #48a1e3;
+  padding: 16px;
+}
+
+.RegisterPage_Input::placeholder {
+  color: #48a1e3;
+  font-size: 16px;
+}
+
+.RegisterPage_ButtonGroup button {
+  margin-right: 12px;
+  background-color: #3de6af;
+  color: #082336;
+  border-radius: 16px;
+  border: none;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 14px;
+  margin-top: 3px;
+}
+
+.RegisterPage_ButtonGroup button:hover,
+.RegisterPage_ButtonGroup button:focus,
+.RegisterPage_ButtonGroup button:active {
+  background-color: #32bb8d;
+  color: #103652;
+}

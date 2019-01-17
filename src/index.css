@@ -12,3 +12,20 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+:-webkit-autofill,
+:-webkit-autofill:hover,
+:-webkit-autofill:focus,
+:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #082336 inset !important;
+}
+
+:-webkit-autofill {
+  -webkit-text-fill-color: #48a1e3 !important;
+}
+
+button,
+button:hover {
+  max-width: 100px;
+  width: 100%;
+}

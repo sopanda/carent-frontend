@@ -5,9 +5,10 @@ import {
   CardText,
   CardBody,
   CardTitle,
-  Button
+  CardSubtitle
 } from "reactstrap";
 import CarImageTmp from "../../../assets/cars/audiA6.jpg";
+import { Link } from "react-router-dom";
 import classes from "./CarMapCard.css";
 
 export class CarMapCard extends Component {
@@ -24,12 +25,13 @@ export class CarMapCard extends Component {
           />
           <CardBody>
             <CardTitle>Audi A6, 2015, Diesel,</CardTitle>
+            <CardSubtitle>270 W 43rd St, New York, NY 10036, </CardSubtitle>
             <CardText className={classes.Description}>
               Owner: Mike Harisson <br />
               Status: Available <br />
               Price: 50$ per day
             </CardText>
-            <Button>Book car</Button>
+            <Link to="/offer">Show offer</Link>
           </CardBody>
         </Card>
       </Fragment>

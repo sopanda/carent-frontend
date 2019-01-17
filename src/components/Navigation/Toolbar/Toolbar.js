@@ -55,14 +55,16 @@ class Toolbar extends Component {
     );
 
     return (
-      <Container fluid={true} className={classes.Toolbar}>
-        <Navbar dark expand="md" className={classes.Navbar}>
-          <NavbarBrand tag={navLink} exact to="/" className={classes.Brand}>
-            Carent
-          </NavbarBrand>
-          {navbarToggler}
-        </Navbar>
-      </Container>
+      <div className={classes.Toolbar}>
+        <Container>
+          <Navbar dark expand="md" className={classes.Navbar}>
+            <NavbarBrand tag={navLink} exact to="/" className={classes.Brand}>
+              Carent
+            </NavbarBrand>
+            {navbarToggler}
+          </Navbar>
+        </Container>
+      </div>
     );
   }
 }
