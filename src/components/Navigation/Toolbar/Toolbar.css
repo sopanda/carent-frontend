@@ -2,6 +2,10 @@
   background-color: #082336;
 }
 
+.NavbarWrapper {
+  /* display: inline; */
+}
+
 .Brand {
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -13,4 +17,12 @@
 
 .List {
   text-align: center;
+}
+
+.DashboardLink {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.DashboardLink:hover {
+  color: rgba(255, 255, 255, 0.75);
 }

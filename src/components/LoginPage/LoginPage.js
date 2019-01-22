@@ -12,6 +12,7 @@ import {
   Row
 } from "reactstrap";
 import classes from "./LoginPage.css";
+import MyButton from "../Navigation/MyButton/MyButton";
 
 class LoginPage extends React.Component {
   constructor(props) {
@@ -45,7 +46,7 @@ class LoginPage extends React.Component {
     const { username, password, submitted } = this.state;
     return (
       <Container fluid={true} className={classes.LoginPage}>
-        <Row className="h-100 justify-content-center align-items-center">
+        <Row className="row h-100 justify-content-center align-items-center">
           <Col className={classes.LoginPage_Wrapper}>
             <Form onSubmit={this.handleSubmit}>
               <FormGroup>
@@ -75,9 +76,9 @@ class LoginPage extends React.Component {
                 )}
               </FormGroup>
               <div className={classes.LoginPage_ButtonGroup}>
-                <Button>Submit</Button>
+                <MyButton>Submit</MyButton>
                 <Link to="/register">
-                  <Button>Register</Button>
+                  <MyButton>Register</MyButton>
                 </Link>
               </div>
             </Form>

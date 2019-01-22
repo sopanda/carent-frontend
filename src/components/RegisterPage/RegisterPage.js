@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { userActions } from "../../actions";
+import MyButton from "../Navigation/MyButton/MyButton";
 import {
   Container,
   Col,
@@ -109,9 +110,9 @@ class RegisterPage extends Component {
                 )}
               </FormGroup>
               <div className={classes.RegisterPage_ButtonGroup}>
-                <Button>Register</Button>
-                <Link to="/login" className="btn btn-link">
-                  <Button>Cancel</Button>
+                <MyButton>Register</MyButton>
+                <Link to="/login">
+                  <MyButton>Cancel</MyButton>
                 </Link>
               </div>
             </Form>

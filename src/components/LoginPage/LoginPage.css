@@ -24,24 +24,3 @@
   color: #48a1e3;
   font-size: 16px;
 }
-
-.LoginPage_ButtonGroup button {
-  margin-right: 12px;
-  background-color: #3de6af;
-  color: #082336;
-  border-radius: 16px;
-  border: none;
-  text-transform: uppercase;
-  font-weight: 500;
-  font-size: 14px;
-  margin-top: 3px;
-  max-width: 100px;
-  width: 100%;
-}
-
-.LoginPage_ButtonGroup button:hover,
-.LoginPage_ButtonGroup button:focus,
-.LoginPage_ButtonGroup button:active {
-  background-color: #32bb8d;
-  color: #103652;
-}

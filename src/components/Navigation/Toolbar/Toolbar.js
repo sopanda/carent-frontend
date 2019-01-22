@@ -16,17 +16,16 @@ import { withRouter } from "react-router";
 class Toolbar extends Component {
   constructor(props) {
     super(props);
-    this.toggle = this.toggle.bind(this);
     this.state = {
       isOpen: false,
-      home: false
+      isLoggedIn: true // if true - show dashboard | false - hide
     };
   }
-  toggle() {
+  toggle = () => {
     this.setState({
       isOpen: !this.state.isOpen
     });
-  }
+  };
 
   render() {
     let navbarToggler = (
@@ -61,6 +60,16 @@ class Toolbar extends Component {
             <NavbarBrand tag={navLink} exact to="/" className={classes.Brand}>
               Carent
             </NavbarBrand>
+            {this.state.isLoggedIn && (
+              <NavLink
+                tag={navLink}
+                to="/dashboard"
+                exact
+                className={classes.DashboardLink}
+              >
+                Dashboard
+              </NavLink>
+            )}
             {navbarToggler}
           </Navbar>
         </Container>
