@@ -6,9 +6,9 @@ import Offer from "./components/Offer/Offer";
 import { connect } from "react-redux";
 import { history } from "./helpers";
 import { alertActions } from "./actions";
-import { PrivateRoute } from "./components/PrivateRoute/PrivateRoute";
-import LoginPage from "./components/LoginPage/LoginPage";
-import RegisterPage from "./components/RegisterPage/RegisterPage";
+// import { PrivateRoute } from "./components/PrivateRoute/PrivateRoute";
+// import LoginPage from "./components/LoginPage/LoginPage";
+// import RegisterPage from "./components/RegisterPage/RegisterPage";
 
 class App extends Component {
   constructor(props) {

@@ -1,0 +1,18 @@
+.UserImage {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #ccc;
+  top: 50%;
+  transform: translate(20px, -50%);
+  left: 20px;
+  position: absolute;
+}
+
+.CommentBody {
+  padding-left: 150px;
+}
+
+.CommentBox {
+  margin: 20px 0;
+}

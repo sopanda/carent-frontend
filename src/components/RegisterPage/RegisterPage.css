@@ -43,6 +43,8 @@
   font-weight: 500;
   font-size: 14px;
   margin-top: 3px;
+  max-width: 100px;
+  width: 100%;
 }
 
 .RegisterPage_ButtonGroup button:hover,

@@ -6,3 +6,11 @@
   text-transform: uppercase;
   letter-spacing: 2px;
 }
+
+.IconToggle {
+  border: none;
+}
+
+.List {
+  text-align: center;
+}

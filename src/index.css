@@ -23,9 +23,3 @@ code {
 :-webkit-autofill {
   -webkit-text-fill-color: #48a1e3 !important;
 }
-
-button,
-button:hover {
-  max-width: 100px;
-  width: 100%;
-}
