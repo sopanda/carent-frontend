@@ -48,6 +48,11 @@ class Toolbar extends Component {
                 Contact
               </NavLink>
             </NavItem>
+            <NavItem>
+              <NavLink tag={navLink} to="/login" exact className={classes.Link}>
+                Logout
+              </NavLink>
+            </NavItem>
           </Nav>
         </Collapse>
       </Fragment>

@@ -11,6 +11,8 @@ import { alertActions } from "./actions";
 // import { PrivateRoute } from "./components/PrivateRoute/PrivateRoute";
 import LoginPage from "./components/LoginPage/LoginPage";
 import RegisterPage from "./components/RegisterPage/RegisterPage";
+import AboutPage from "./components/AboutPage/AboutPage";
+import ContactPage from "./components/ContactPage/ContactPage";
 
 class App extends Component {
   constructor(props) {
@@ -37,6 +39,8 @@ class App extends Component {
               <Route exact path="/" component={Home} />
               <Route exact path="/offer" component={Offer} />
               <Route exact path="/dashboard" component={Dashboard} />
+              <Route exact path="/contact" component={ContactPage} />
+              <Route exact path="/about" component={AboutPage} />
               <Route path="*" component={NotFound} />
             </Switch>
           </Layout>

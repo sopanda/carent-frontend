@@ -6,9 +6,9 @@ const cars = [
   { uid: 1, latitude: 50.3949112, longitude: 24.2494693 },
   { uid: 2, latitude: 50.4000432, longitude: 24.1995349 },
   { uid: 3, latitude: 50.3890432, longitude: 24.222349 },
-  { uid: 4, latitude: 50.3239112, longitude: 24.243693 },
+  { uid: 4, latitude: 50.04132, longitude: 21.95901 },
   { uid: 5, latitude: 50.4024332, longitude: 24.154349 },
-  { uid: 6, latitude: 50.4230432, longitude: 24.125349 }
+  { uid: 6, latitude: 50.04132, longitude: 21.99901 }
 ];
 
 const CarsMap = withScriptjs(
