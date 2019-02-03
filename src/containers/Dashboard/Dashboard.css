@@ -1,0 +1,34 @@
+.Tab_Wrapper {
+  display: flex;
+  color: #fff;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  min-height: 550px;
+}
+
+.Tab_Content {
+  width: 100%;
+  padding: 20px;
+  background-color: #082336;
+  margin: 0 20px;
+  border-radius: 1%;
+}
+
+.Nav {
+  min-width: fit-content;
+  border: none;
+  height: fit-content;
+  background-color: #082336;
+  border-radius: 2%;
+}
+
+.NavLink {
+  border: none !important;
+  color: #fff !important;
+  cursor: pointer;
+  background-color: #082336;
+}
+
+.NavLink:hover {
+  border: none !important;
+}

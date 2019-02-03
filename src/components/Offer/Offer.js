@@ -8,16 +8,18 @@ import classes from "./Offer.css";
 class Offer extends Component {
   render() {
     return (
-      <Container className={classes.Offer_Wrapper}>
-        <Row>
-          <Col md="8">
-            <OfferDescription />
-            <Comments />
-          </Col>
-          <Col md="4">
-            <UserWidget />
-          </Col>
-        </Row>
+      <Container>
+        <div className={classes.Offer_Wrapper}>
+          <Row>
+            <Col md="8">
+              <OfferDescription />
+              <Comments />
+            </Col>
+            <Col md="4">
+              <UserWidget />
+            </Col>
+          </Row>
+        </div>
       </Container>
     );
   }

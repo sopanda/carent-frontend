@@ -15,4 +15,11 @@
 
 .CommentBox {
   margin: 20px 0;
+  background: #082336;
+  color: #fff;
+  border-color: #3de6af;
+}
+
+.Subtitle {
+  margin-bottom: 0.375rem;
 }

@@ -7,12 +7,19 @@
   margin-bottom: 20px;
 }
 
-.Button {
-  margin: 20px;
-  float: right;
+.SendBtn button {
+  max-width: 200px;
+  margin: 20px 0;
 }
 
 .UserWidget_Card {
   max-width: 290px;
   width: 100%;
+  background: #082336;
+  color: #fff;
+  border-color: #3de6af;
+}
+
+.Subtitle {
+  margin-bottom: 0.375rem;
 }

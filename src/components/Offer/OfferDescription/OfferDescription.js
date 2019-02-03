@@ -27,7 +27,7 @@ const car = {
 const OfferDescription = props => {
   return (
     <Fragment>
-      <Card>
+      <Card className={classes.Card}>
         <CardImg
           top
           width="100%"

@@ -9,6 +9,7 @@
 .Brand {
   text-transform: uppercase;
   letter-spacing: 2px;
+  margin-right: 0;
 }
 
 .IconToggle {

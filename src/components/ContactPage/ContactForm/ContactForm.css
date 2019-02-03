@@ -1,0 +1,25 @@
+.ContactForm_Btn_Wrapper {
+  text-align: center;
+}
+
+.ContactForm_Btn_Wrapper button {
+  max-width: 170px;
+  text-align: center;
+}
+
+.ContactForm_Input,
+.ContactForm_Input:focus {
+  background-color: #082336;
+  border-color: #48a1e3;
+  font-size: 16px;
+  color: #48a1e3;
+}
+
+.ContactForm_Input::placeholder {
+  color: #48a1e3;
+  font-size: 16px;
+}
+
+.ContactForm textarea {
+  height: 200px;
+}
