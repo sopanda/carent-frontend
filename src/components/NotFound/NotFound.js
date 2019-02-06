@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import classes from "./NotFound.css";
+import classes from "./NotFound.module.css";
 import MyButton from "../Navigation/MyButton/MyButton";
 
 const NotFound = () => {

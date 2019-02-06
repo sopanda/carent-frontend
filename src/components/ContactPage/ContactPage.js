@@ -1,18 +1,18 @@
 import React from "react";
 import ContactForm from "./ContactForm/ContactForm";
-import classes from "./ContactPage.css";
+import classes from "./ContactPage.module.css";
 import Title from "../Title/Title";
-import { Row, Col, Container } from "reactstrap";
+import { Container } from "reactstrap";
 
 const ContactPage = () => {
   return (
-    <Container fluid={true} className={classes.ContactPage}>
-      <Row>
-        <Col className={classes.ContactPage_Wrapper}>
+    <Container fluid={true}>
+      <div className={classes.ContactPage}>
+        <div className={classes.ContactPage_Wrapper}>
           <Title>Contact</Title>
           <ContactForm />
-        </Col>
-      </Row>
+        </div>
+      </div>
     </Container>
   );
 };

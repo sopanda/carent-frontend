@@ -3,7 +3,7 @@ import OfferDescription from "./OfferDescription/OfferDescription";
 import UserWidget from "./UserWidget/UserWidget";
 import { Container, Col, Row } from "reactstrap";
 import Comments from "../Comments/Comments";
-import classes from "./Offer.css";
+import classes from "./Offer.module.css";
 
 class Offer extends Component {
   render() {

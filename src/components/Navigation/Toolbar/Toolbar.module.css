@@ -2,8 +2,8 @@
   background-color: #082336;
 }
 
-.NavbarWrapper {
-  /* display: inline; */
+.Navbar {
+  padding: 12px !important;
 }
 
 .Brand {
@@ -13,7 +13,7 @@
 }
 
 .IconToggle {
-  border: none;
+  border: none !important;
 }
 
 .List {

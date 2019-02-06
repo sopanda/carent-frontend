@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { Container, Col, Form, FormGroup, Input, Row } from "reactstrap";
-import classes from "./ContactForm.css";
+import { Form, FormGroup, Input } from "reactstrap";
+import classes from "./ContactForm.module.css";
 import MyButton from "../../Navigation/MyButton/MyButton";
 
 class ContactForm extends Component {

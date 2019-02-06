@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import classes from "./Toolbar.css";
+import classes from "./Toolbar.module.css";
 import {
   Collapse,
   Navbar,

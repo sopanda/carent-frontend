@@ -1,8 +1,14 @@
+.ContactPage {
+  position: relative;
+  top: 243px;
+}
+
 .ContactPage_Wrapper {
   max-width: 500px;
   width: 100%;
   margin: 0 auto;
   top: 50%;
+  padding: 0 10px;
   left: 50%;
   position: absolute;
   -webkit-transform: translate(-50%, -50%);

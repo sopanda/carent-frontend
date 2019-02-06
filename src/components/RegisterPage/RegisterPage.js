@@ -3,16 +3,9 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { userActions } from "../../actions";
 import MyButton from "../Navigation/MyButton/MyButton";
-import {
-  Container,
-  Col,
-  Form,
-  FormGroup,
-  Input,
-  Button,
-  Row
-} from "reactstrap";
-import classes from "./RegisterPage.css";
+import { Container, Form, FormGroup, Input } from "reactstrap";
+import classes from "./RegisterPage.module.css";
+import Title from "../Title/Title";
 
 class RegisterPage extends Component {
   constructor(props) {
@@ -52,10 +45,10 @@ class RegisterPage extends Component {
   render() {
     const { user, submitted } = this.state;
     return (
-      <Container fluid={true} className={classes.RegisterPage}>
-        <Row className="h-100 justify-content-center align-items-center">
-          <Col className={classes.RegisterPage_Wrapper}>
-            <h2>Registration</h2>
+      <Container fluid={true}>
+        <div className={classes.RegisterPage}>
+          <div className={classes.RegisterPage_Wrapper}>
+            <Title>Registration</Title>
             <Form onSubmit={this.handleSubmit}>
               <FormGroup>
                 <Input
@@ -116,8 +109,8 @@ class RegisterPage extends Component {
                 </Link>
               </div>
             </Form>
-          </Col>
-        </Row>
+          </div>
+        </div>
       </Container>
     );
   }

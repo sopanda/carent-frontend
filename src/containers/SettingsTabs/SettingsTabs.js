@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { TabContent, TabPane, Nav, NavItem, NavLink } from "reactstrap";
 import classnames from "classnames";
-import classes from "./SettingsTabs.css";
+import classes from "./SettingsTabs.module.css";
 
 class SettingsTabs extends Component {
   constructor(props) {

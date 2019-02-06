@@ -2,16 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { userActions } from "../../actions";
-import {
-  Container,
-  Col,
-  Form,
-  FormGroup,
-  Input,
-  Button,
-  Row
-} from "reactstrap";
-import classes from "./LoginPage.css";
+import { Container, Form, FormGroup, Input } from "reactstrap";
+import classes from "./LoginPage.module.css";
 import MyButton from "../Navigation/MyButton/MyButton";
 
 class LoginPage extends React.Component {
@@ -45,45 +37,43 @@ class LoginPage extends React.Component {
   render() {
     const { username, password, submitted } = this.state;
     return (
-      <Container fluid={true} className={classes.LoginPage}>
-        <Row className="row h-100 justify-content-center align-items-center">
-          <Col className={classes.LoginPage_Wrapper}>
-            <Form onSubmit={this.handleSubmit}>
-              <FormGroup>
-                <Input
-                  type="email"
-                  name="username"
-                  placeholder="Username"
-                  value={username}
-                  onChange={this.handleChange}
-                  className={classes.LoginPage_Input + " form-control-lg"}
-                />
-                {submitted && !username && (
-                  <div className="help-block">Username is required</div>
-                )}
-              </FormGroup>
-              <FormGroup>
-                <Input
-                  type="password"
-                  name="password"
-                  value={password}
-                  onChange={this.handleChange}
-                  placeholder="Password"
-                  className={classes.LoginPage_Input + " form-control-lg"}
-                />
-                {submitted && !password && (
-                  <div className="help-block">Password is required</div>
-                )}
-              </FormGroup>
-              <div className={classes.LoginPage_ButtonGroup}>
-                <MyButton>Submit</MyButton>
-                <Link to="/register">
-                  <MyButton>Register</MyButton>
-                </Link>
-              </div>
-            </Form>
-          </Col>
-        </Row>
+      <Container fluid={true}>
+        <div className={classes.LoginPage_Wrapper}>
+          <Form onSubmit={this.handleSubmit}>
+            <FormGroup>
+              <Input
+                type="email"
+                name="username"
+                placeholder="Username"
+                value={username}
+                onChange={this.handleChange}
+                className={classes.LoginPage_Input + " form-control-lg"}
+              />
+              {submitted && !username && (
+                <div className="help-block">Username is required</div>
+              )}
+            </FormGroup>
+            <FormGroup>
+              <Input
+                type="password"
+                name="password"
+                value={password}
+                onChange={this.handleChange}
+                placeholder="Password"
+                className={classes.LoginPage_Input + " form-control-lg"}
+              />
+              {submitted && !password && (
+                <div className="help-block">Password is required</div>
+              )}
+            </FormGroup>
+            <div className={classes.LoginPage_ButtonGroup}>
+              <MyButton>Submit</MyButton>
+              <Link to="/register">
+                <MyButton>Register</MyButton>
+              </Link>
+            </div>
+          </Form>
+        </div>
       </Container>
     );
   }

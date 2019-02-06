@@ -1,4 +1,4 @@
-.ContactForm_Btn_Wrapper {
+.ContactForm .ContactForm_Btn_Wrapper {
   text-align: center;
 }
 
@@ -9,15 +9,15 @@
 
 .ContactForm_Input,
 .ContactForm_Input:focus {
-  background-color: #082336;
-  border-color: #48a1e3;
-  font-size: 16px;
-  color: #48a1e3;
+  background-color: #082336 !important;
+  border-color: #48a1e3 !important;
+  font-size: 16px !important;
+  color: #48a1e3 !important;
 }
 
 .ContactForm_Input::placeholder {
-  color: #48a1e3;
-  font-size: 16px;
+  color: #48a1e3 !important;
+  font-size: 16px !important;
 }
 
 .ContactForm textarea {

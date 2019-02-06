@@ -13,14 +13,14 @@
 }
 
 .CommentBody {
-  padding: 1.25rem 0;
+  padding: 1.25rem 0 !important;
 }
 
 .CommentBox {
-  margin: 20px 0;
-  background: #082336;
-  color: #fff;
-  border-color: #3de6af;
+  margin: 20px 0 !important;
+  background: #082336 !important;
+  color: #fff !important;
+  border-color: #3de6af !important;
 }
 
 .Subtitle {

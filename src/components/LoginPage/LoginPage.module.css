@@ -1,0 +1,26 @@
+.LoginPage_Wrapper {
+  max-width: 450px;
+  width: 100%;
+  position: absolute;
+  padding: 0 10px;
+  top: 50%;
+  left: 50%;
+  text-align: right;
+  transform: translate(-50%, -50%);
+}
+
+.LoginPage_Input,
+.LoginPage_Input:focus {
+  background-color: #082336 !important;
+  border-color: #48a1e3 !important;
+  max-height: 110px !important;
+  height: 100% !important;
+  font-size: 16px !important;
+  color: #48a1e3 !important;
+  padding: 16px !important;
+}
+
+.LoginPage_Input::placeholder {
+  color: #48a1e3 !important;
+  font-size: 16px;
+}

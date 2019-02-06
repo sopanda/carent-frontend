@@ -1,7 +1,6 @@
 import React, { Fragment } from "react";
-// import PropTypes from "prop-types";
 import { Card, CardBody, CardTitle, CardSubtitle } from "reactstrap";
-import classes from "./UserWidget.css";
+import classes from "./UserWidget.module.css";
 import MyButton from "../../Navigation/MyButton/MyButton";
 
 const UserWidget = props => {
@@ -26,9 +25,5 @@ const UserWidget = props => {
     </Fragment>
   );
 };
-
-// UserWidget.propTypes = {
-//   owner: PropTypes.object.isRequired
-// };
 
 export default UserWidget;

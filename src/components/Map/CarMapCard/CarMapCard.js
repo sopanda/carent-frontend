@@ -9,7 +9,7 @@ import {
 } from "reactstrap";
 import CarImageTmp from "../../../assets/cars/audiA6.jpg";
 import { Link } from "react-router-dom";
-import classes from "./CarMapCard.css";
+import classes from "./CarMapCard.module.css";
 
 export class CarMapCard extends Component {
   render() {

@@ -19,9 +19,9 @@
 .UserWidget_Card {
   max-width: 290px;
   width: 100%;
-  background: #082336;
+  background: #082336 !important;
   color: #fff;
-  border-color: #3de6af;
+  border-color: #3de6af !important;
 }
 
 .Subtitle {

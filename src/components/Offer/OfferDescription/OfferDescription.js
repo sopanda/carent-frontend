@@ -9,7 +9,7 @@ import {
   Row,
   Col
 } from "reactstrap";
-import classes from "./OfferDescription.css";
+import classes from "./OfferDescription.module.css";
 
 const car = {
   model: "Focus",
