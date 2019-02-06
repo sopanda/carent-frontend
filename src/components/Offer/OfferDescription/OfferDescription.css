@@ -3,6 +3,15 @@
   margin-top: 12px;
 }
 
+.Car_Attribute {
+  border: 1px solid #3de6af;
+  padding: 10px;
+}
+
+.Car_Attribute:not(:last-child) {
+  border-bottom: 0;
+}
+
 .Subtitle {
   margin-bottom: 0.375rem;
 }

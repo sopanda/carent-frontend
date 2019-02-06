@@ -12,6 +12,10 @@
   margin: 20px 0;
 }
 
+.SendBtn {
+  text-align: center;
+}
+
 .UserWidget_Card {
   max-width: 290px;
   width: 100%;

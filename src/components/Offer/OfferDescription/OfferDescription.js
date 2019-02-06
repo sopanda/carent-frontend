@@ -42,19 +42,29 @@ const OfferDescription = props => {
           </CardSubtitle>
           <div className={classes.Columns_Wrapper}>
             <Row>
-              <Col>
-                <div>Model : {car.model}</div>
-                <div>Doors : {car.doors}</div>
-                <div>Color : {car.color}</div>
-                <div>Air conditioner : {car.air}</div>
-                <div>Kid chair : {car.kid_chair}</div>
+              <Col xs="12" md="6">
+                <div className={classes.Car_Attribute}>Model : {car.model}</div>
+                <div className={classes.Car_Attribute}>Doors : {car.doors}</div>
+                <div className={classes.Car_Attribute}>Color : {car.color}</div>
+                <div className={classes.Car_Attribute}>
+                  Air conditioner : {car.air}
+                </div>
+                <div className={classes.Car_Attribute}>
+                  Kid chair : {car.kid_chair}
+                </div>
               </Col>
-              <Col>
-                <div>Country : {car.country}</div>
-                <div>Transmission : {car.transmission}</div>
-                <div>Fuel : {car.fuel}</div>
-                <div>Mileage : {car.mileage}</div>
-                <div>Year : {car.year}</div>
+              <Col xs="12" md="6">
+                <div className={classes.Car_Attribute}>
+                  Country : {car.country}
+                </div>
+                <div className={classes.Car_Attribute}>
+                  Transmission : {car.transmission}
+                </div>
+                <div className={classes.Car_Attribute}>Fuel : {car.fuel}</div>
+                <div className={classes.Car_Attribute}>
+                  Mileage : {car.mileage}
+                </div>
+                <div className={classes.Car_Attribute}>Year : {car.year}</div>
               </Col>
             </Row>
           </div>
