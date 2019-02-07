@@ -1,23 +1,3 @@
 .Tab_Content {
-  width: 100%;
   padding: 20px;
-  background-color: #082336;
-  border-radius: 1%;
-}
-
-.Nav {
-  border: none !important;
-  background-color: #082336;
-  border-radius: 2%;
-  text-align: center;
-}
-
-.NavLink {
-  color: #fff !important;
-  cursor: pointer;
-  background-color: #082336;
-}
-
-.NavLink:hover {
-  border-color: #3de6af !important;
 }

@@ -1,96 +1,40 @@
-import React, { Component } from "react";
+import React from "react";
+import { Container, Row, Col } from "reactstrap";
 import {
-  TabContent,
-  TabPane,
-  Nav,
-  NavItem,
-  NavLink,
-  Container,
-  Row,
-  Col
-} from "reactstrap";
-import classnames from "classnames";
-import classes from "./SettingsTabs.module.css";
-import "./SettingsTabs.css";
+  Tab,
+  Tabs,
+  TabList,
+  TabPanel
+} from "../../components/TabsStyling/index";
+import "react-tabs/style/react-tabs.css";
 
-class SettingsTabs extends Component {
-  constructor(props) {
-    super(props);
-
-    this.toggle = this.toggle.bind(this);
-    this.state = {
-      activeTab: "1"
-    };
-  }
-
-  toggle(tab) {
-    if (this.state.activeTab !== tab) {
-      this.setState({
-        activeTab: tab
-      });
-    }
-  }
-  render() {
-    return (
+const SettingsTabs = props => {
+  return (
+    <Tabs>
       <Container>
         <Row>
           <Col md="2">
-            <Nav tabs vertical className={classes.Nav}>
-              <NavItem>
-                <NavLink
-                  className={
-                    classnames({ active: this.state.activeTab === "1" }) +
-                    classes.NavLink
-                  }
-                  onClick={() => {
-                    this.toggle("1");
-                  }}
-                >
-                  Orders
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink
-                  className={
-                    classnames({ active: this.state.activeTab === "2" }) +
-                    classes.NavLink
-                  }
-                  onClick={() => {
-                    this.toggle("2");
-                  }}
-                >
-                  Cars
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink
-                  className={
-                    classnames({ active: this.state.activeTab === "3" }) +
-                    classes.NavLink
-                  }
-                  onClick={() => {
-                    this.toggle("3");
-                  }}
-                >
-                  Verify account
-                </NavLink>
-              </NavItem>
-            </Nav>
+            <TabList>
+              <Tab>Orders</Tab>
+              <Tab>Cars</Tab>
+              <Tab>Verify account</Tab>
+            </TabList>
           </Col>
           <Col md="10">
-            <TabContent
-              activeTab={this.state.activeTab}
-              className={classes.Tab_Content}
-            >
-              <TabPane tabId="1">Hello 1</TabPane>
-              <TabPane tabId="2">Hello 2</TabPane>
-              <TabPane tabId="3">Hello 3</TabPane>
-            </TabContent>
+            <TabPanel>
+              <h2>Any content 1</h2>
+            </TabPanel>
+            <TabPanel>
+              <h2>Any content 2</h2>
+            </TabPanel>
+            <TabPanel>
+              <h2>Any content 3</h2>
+            </TabPanel>
           </Col>
         </Row>
       </Container>
-    );
-  }
-}
+    </Tabs>
+  );
+};
 
 export default SettingsTabs;
