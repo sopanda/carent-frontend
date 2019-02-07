@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { Card, CardBody, CardTitle, CardSubtitle } from "reactstrap";
 import classes from "./UserWidget.module.css";
-import MyButton from "../../Navigation/MyButton/MyButton";
+import MyButton from "../../MyButton/MyButton";
 
 const UserWidget = props => {
   return (
@@ -17,9 +17,11 @@ const UserWidget = props => {
             {/*`@${props.owner.username}`*/}
             Account status: Verified
           </CardSubtitle>
-          <div className={classes.SendBtn}>
-            <MyButton>Send request</MyButton>
-          </div>
+          {props.btnTitle && (
+            <div className={classes.SendBtn}>
+              <MyButton title={props.btnTitle} />
+            </div>
+          )}
         </CardBody>
       </Card>
     </Fragment>

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { userActions } from "../../actions";
-import MyButton from "../Navigation/MyButton/MyButton";
+import MyButton from "../MyButton/MyButton";
 import { Container, Form, FormGroup, Input } from "reactstrap";
 import classes from "./RegisterPage.module.css";
 import Title from "../Title/Title";

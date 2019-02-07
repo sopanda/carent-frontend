@@ -16,7 +16,7 @@ class Offer extends Component {
               <Comments />
             </Col>
             <Col md="4">
-              <UserWidget />
+              <UserWidget btnTitle="Send request" />
             </Col>
           </Row>
         </div>

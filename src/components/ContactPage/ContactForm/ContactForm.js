@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Form, FormGroup, Input } from "reactstrap";
 import classes from "./ContactForm.module.css";
-import MyButton from "../../Navigation/MyButton/MyButton";
+import MyButton from "../../MyButton/MyButton";
 
 class ContactForm extends Component {
   constructor(props) {
@@ -58,7 +58,7 @@ class ContactForm extends Component {
           />
         </FormGroup>
         <div className={classes.ContactForm_Btn_Wrapper}>
-          <MyButton>Contact us</MyButton>
+          <MyButton title="Contact us" />
         </div>
       </Form>
     );

@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { userActions } from "../../actions";
 import { Container, Form, FormGroup, Input } from "reactstrap";
 import classes from "./LoginPage.module.css";
-import MyButton from "../Navigation/MyButton/MyButton";
+import MyButton from "../MyButton/MyButton";
 
 class LoginPage extends React.Component {
   constructor(props) {
@@ -67,9 +67,9 @@ class LoginPage extends React.Component {
               )}
             </FormGroup>
             <div className={classes.LoginPage_ButtonGroup}>
-              <MyButton>Submit</MyButton>
+              <MyButton title="Submit" />
               <Link to="/register">
-                <MyButton>Register</MyButton>
+                <MyButton title="Register" />
               </Link>
             </div>
           </Form>
