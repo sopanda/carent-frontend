@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import SettingsTabs from "./SettingsTabs/SettingsTabs";
 import { Container, Row, Col } from "reactstrap";
-import UserWidget from "../../components/Offer/UserWidget/UserWidget";
 import classes from "./Dashboard.module.css";
 
 class Dashboard extends Component {
@@ -10,11 +9,8 @@ class Dashboard extends Component {
       <Container>
         <div className={classes.Dashboard_Wrapper} />
         <Row>
-          <Col md="9">
+          <Col>
             <SettingsTabs />
-          </Col>
-          <Col md="3">
-            <UserWidget />
           </Col>
         </Row>
       </Container>

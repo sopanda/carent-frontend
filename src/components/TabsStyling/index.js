@@ -8,6 +8,7 @@ import {
 
 const Tabs = styled(UnstyledTabs)`
   display: flex;
+  margin-bottom: 20px;
 `;
 
 const TabList = styled(UnstyledTabList)`
@@ -22,6 +23,10 @@ const TabList = styled(UnstyledTabList)`
 const TabPanel = styled(UnstyledTabPanel)`
   background-color: #082336;
   border-radius: 2%;
+  @media only screen and (max-width: 600px) {
+    font-size: 12px;
+    overflow: scroll;
+  }
 `;
 
 const Tab = styled(UnstyledTab).attrs({

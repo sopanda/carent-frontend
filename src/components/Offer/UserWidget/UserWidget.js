@@ -6,7 +6,7 @@ import MyButton from "../../MyButton/MyButton";
 const UserWidget = props => {
   return (
     <Fragment>
-      <Card className={classes.UserWidget_Card}>
+      <Card className={classes.UserWidget_Card + " " + props.className}>
         <CardBody>
           <div className={classes.Image} />
           <CardTitle>

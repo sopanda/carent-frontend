@@ -1,3 +1,7 @@
 .Tab_Content {
   padding: 20px;
 }
+
+.Widget {
+  float: right;
+}
