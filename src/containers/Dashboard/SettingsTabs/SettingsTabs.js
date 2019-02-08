@@ -10,6 +10,7 @@ import "react-tabs/style/react-tabs.css";
 import classes from "./SettingsTabs.module.css";
 import OrderPanel from "./OrderPanel/OrderPanel";
 import UserWidget from "../../../components/Offer/UserWidget/UserWidget";
+import CarsPanel from "./CarsPanel/CarsPanel";
 
 const SettingsTabs = props => {
   return (
@@ -31,7 +32,7 @@ const SettingsTabs = props => {
               <OrderPanel />
             </TabPanel>
             <TabPanel>
-              <h2>Any content 3</h2>
+              <CarsPanel />
             </TabPanel>
           </Col>
         </Row>

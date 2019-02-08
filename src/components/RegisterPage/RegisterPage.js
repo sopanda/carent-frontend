@@ -103,9 +103,9 @@ class RegisterPage extends Component {
                 )}
               </FormGroup>
               <div className={classes.RegisterPage_ButtonGroup}>
-                <MyButton>Register</MyButton>
+                <MyButton title="Register" />
                 <Link to="/login">
-                  <MyButton>Cancel</MyButton>
+                  <MyButton title="Cancel" />
                 </Link>
               </div>
             </Form>

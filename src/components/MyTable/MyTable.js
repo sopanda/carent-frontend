@@ -13,31 +13,52 @@ const TableRowCell = styled.th`
 
 class MyTable extends Component {
   render() {
-    const { data } = this.props;
-    let orders = data.length
-      ? data.map((order, i) => (
-          <tr key={i}>
-            <TableRowCell>{order.id}</TableRowCell>
-            <TableRowCell>{order.car}</TableRowCell>
-            <TableRowCell>{order.start}</TableRowCell>
-            <TableRowCell>{order.till}</TableRowCell>
-            <TableRowCell>{order.status}</TableRowCell>
-          </tr>
-        ))
-      : null;
+    const { data, type } = this.props;
+    let information;
+    if (type !== "cars") {
+      information = data.length
+        ? data.map((order, i) => (
+            <tr key={i}>
+              <TableRowCell>{order.id}</TableRowCell>
+              <TableRowCell>{order.car}</TableRowCell>
+              <TableRowCell>{order.start}</TableRowCell>
+              <TableRowCell>{order.till}</TableRowCell>
+              <TableRowCell>{order.status}</TableRowCell>
+            </tr>
+          ))
+        : null;
+    } else {
+      information = data.length
+        ? data.map((car, i) => (
+            <tr key={i}>
+              <TableRowCell>{car.id}</TableRowCell>
+              <TableRowCell>{car.car}</TableRowCell>
+              <TableRowCell>{car.status}</TableRowCell>
+            </tr>
+          ))
+        : null;
+    }
 
+    const headers =
+      type !== "cars" ? (
+        <tr>
+          <TableHead>#</TableHead>
+          <TableHead>Car</TableHead>
+          <TableHead>From</TableHead>
+          <TableHead>Till</TableHead>
+          <TableHead>Status</TableHead>
+        </tr>
+      ) : (
+        <tr>
+          <TableHead>#</TableHead>
+          <TableHead>Car</TableHead>
+          <TableHead>Status</TableHead>
+        </tr>
+      );
     return (
       <Table>
-        <thead>
-          <tr>
-            <TableHead>#</TableHead>
-            <TableHead>Car</TableHead>
-            <TableHead>From</TableHead>
-            <TableHead>Till</TableHead>
-            <TableHead>Status</TableHead>
-          </tr>
-        </thead>
-        <tbody>{orders}</tbody>
+        <thead>{headers}</thead>
+        <tbody>{information}</tbody>
       </Table>
     );
   }
