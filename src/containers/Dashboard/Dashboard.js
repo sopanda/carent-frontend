@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import SettingsTabs from "../SettingsTabs/SettingsTabs";
+import SettingsTabs from "./SettingsTabs/SettingsTabs";
 import { Container, Row, Col } from "reactstrap";
 import UserWidget from "../../components/Offer/UserWidget/UserWidget";
 import classes from "./Dashboard.module.css";

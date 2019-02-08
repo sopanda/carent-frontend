@@ -29,7 +29,7 @@ export class CarMarker extends Component {
     return (
       <Marker position={this.props.location} onClick={this.toggleOpen}>
         {this.state.isOpen && this.state.activeMarker ? (
-          <InfoWindow maxWidth={800} defaultPosition={this.props.location}>
+          <InfoWindow max-width={350} defaultPosition={this.props.location}>
             <CarMapCard />
           </InfoWindow>
         ) : null}

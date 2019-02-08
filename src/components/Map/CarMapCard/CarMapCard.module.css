@@ -1,8 +1,6 @@
-.Card {
-  max-width: 323px;
-  color: #fff;
-}
-
 .Card button {
-  float: right;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  font-size: 12px;
 }

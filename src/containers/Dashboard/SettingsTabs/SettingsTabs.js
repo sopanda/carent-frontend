@@ -5,7 +5,7 @@ import {
   Tabs,
   TabList,
   TabPanel
-} from "../../components/TabsStyling/index";
+} from "../../../components/TabsStyling/index";
 import "react-tabs/style/react-tabs.css";
 
 const SettingsTabs = props => {
