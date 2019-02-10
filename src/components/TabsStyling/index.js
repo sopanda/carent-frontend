@@ -21,7 +21,9 @@ const TabList = styled(UnstyledTabList)`
 `;
 
 const TabPanel = styled(UnstyledTabPanel)`
-  background-color: #082336;
+  &:not(:first-child) {
+    background-color: #082336;
+  }
   border-radius: 2%;
   @media only screen and (max-width: 600px) {
     font-size: 12px;

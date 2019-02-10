@@ -3,10 +3,7 @@ import UserWidget from "../../../../components/Offer/UserWidget/UserWidget";
 import styled from "styled-components";
 import { CustomInput, Row, Col, InputGroup } from "reactstrap";
 import MyButton from "../../../../components/MyButton/MyButton";
-
-const Title = styled.h5`
-  text-transform: uppercase;
-`;
+import { SettingsTitle } from "../../../../components/SettingsTitle/SettingsTitle";
 
 const Wrapper = styled.div`
   padding: 20px;
@@ -56,7 +53,7 @@ class VerificationPanel extends Component {
         <Row>
           <Col md="8" sm="12">
             <UploadingWrapper>
-              <Title>Please verify your account</Title>
+              <SettingsTitle>Please verify your account</SettingsTitle>
               <InputGroup>
                 <UploadInput
                   type="file"
