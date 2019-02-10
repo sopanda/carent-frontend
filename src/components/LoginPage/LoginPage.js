@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { userActions } from "../../actions";
+import { login } from "../../actions/user.actions";
 import { Container, Form, FormGroup, Input } from "reactstrap";
 import classes from "./LoginPage.module.css";
 import MyButton from "../MyButton/MyButton";
@@ -9,8 +9,6 @@ import MyButton from "../MyButton/MyButton";
 class LoginPage extends React.Component {
   constructor(props) {
     super(props);
-    // reset login status
-    this.props.dispatch(userActions.logout());
     this.state = {
       username: "",
       password: "",
@@ -25,12 +23,12 @@ class LoginPage extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-
     this.setState({ submitted: true });
     const { username, password } = this.state;
-    const { dispatch } = this.props;
     if (username && password) {
-      dispatch(userActions.login(username, password));
+      let user = { username: username, password: password };
+      console.log(user);
+      this.props.onLogin(user);
     }
   };
 
@@ -80,10 +78,18 @@ class LoginPage extends React.Component {
 }
 
 function mapStateToProps(state) {
-  const { loggingIn } = state.authentication;
   return {
-    loggingIn
+    loggedIn: state.authentication.loggedIn
   };
 }
 
-export default connect(mapStateToProps)(LoginPage);
+const mapDispatchToProps = dispatch => {
+  return {
+    onLogin: user => dispatch(login(user))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LoginPage);

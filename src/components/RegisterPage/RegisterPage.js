@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { userActions } from "../../actions";
 import MyButton from "../MyButton/MyButton";
 import { Container, Form, FormGroup, Input } from "reactstrap";
 import classes from "./RegisterPage.module.css";
 import Title from "../Title/Title";
+import { register } from "../../actions/user.actions";
 
 class RegisterPage extends Component {
   constructor(props) {
@@ -14,6 +14,7 @@ class RegisterPage extends Component {
       user: {
         firstName: "",
         lastName: "",
+        email: "",
         username: "",
         password: ""
       },
@@ -36,9 +37,15 @@ class RegisterPage extends Component {
     event.preventDefault();
     this.setState({ submitted: true });
     const { user } = this.state;
-    const { dispatch } = this.props;
-    if (user.firstName && user.lastName && user.username && user.password) {
-      dispatch(userActions.register(user));
+    if (
+      user.firstName &&
+      user.lastName &&
+      user.username &&
+      user.password &&
+      user.email
+    ) {
+      console.log(user);
+      this.props.onRegister(user);
     }
   };
 
@@ -74,6 +81,19 @@ class RegisterPage extends Component {
                 />
                 {submitted && !user.lastName && (
                   <div className="help-block">Last Name is required</div>
+                )}
+              </FormGroup>
+              <FormGroup>
+                <Input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  value={user.email}
+                  onChange={this.handleChange}
+                  className={classes.RegisterPage_Input + " form-control-lg"}
+                />
+                {submitted && !user.email && (
+                  <div className="help-block">Email is required</div>
                 )}
               </FormGroup>
               <FormGroup>
@@ -117,10 +137,19 @@ class RegisterPage extends Component {
 }
 
 function mapStateToProps(state) {
-  const { registering } = state.registration;
   return {
-    registering
+    registering: state.registration.registering,
+    registered: state.registration.registered
   };
 }
 
-export default connect(mapStateToProps)(RegisterPage);
+const mapDispatchToProps = dispatch => {
+  return {
+    onRegister: user => dispatch(register(user))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(RegisterPage);
