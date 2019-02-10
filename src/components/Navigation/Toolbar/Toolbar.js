@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from "react";
 import classes from "./Toolbar.module.css";
+import { connect } from "react-redux";
+import { logout } from "../../../actions/user.actions";
 import {
   Collapse,
   Navbar,
@@ -17,8 +19,7 @@ class Toolbar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isOpen: false,
-      isLoggedIn: true // if true - show dashboard | false - hide
+      isOpen: false
     };
   }
   toggle = () => {
@@ -28,6 +29,8 @@ class Toolbar extends Component {
   };
 
   render() {
+    const { onLogOut } = this.props;
+
     let navbarToggler = (
       <Fragment>
         <NavbarToggler className={classes.IconToggle} onClick={this.toggle} />
@@ -49,7 +52,13 @@ class Toolbar extends Component {
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink tag={navLink} to="/login" exact className={classes.Link}>
+              <NavLink
+                tag={navLink}
+                to="/login"
+                exact
+                className={classes.Link}
+                onClick={onLogOut}
+              >
                 Logout
               </NavLink>
             </NavItem>
@@ -65,16 +74,15 @@ class Toolbar extends Component {
             <NavbarBrand tag={navLink} exact to="/" className={classes.Brand}>
               Carent
             </NavbarBrand>
-            {this.state.isLoggedIn && (
-              <NavLink
-                tag={navLink}
-                to="/dashboard"
-                exact
-                className={classes.DashboardLink}
-              >
-                Dashboard
-              </NavLink>
-            )}
+            <NavLink
+              tag={navLink}
+              to="/dashboard"
+              exact
+              className={classes.DashboardLink}
+            >
+              Dashboard
+            </NavLink>
+
             {navbarToggler}
           </Navbar>
         </Container>
@@ -83,4 +91,13 @@ class Toolbar extends Component {
   }
 }
 
-export default withRouter(Toolbar);
+const mapDispatchToProps = dispatch => {
+  return {
+    onLogOut: () => dispatch(logout())
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(withRouter(Toolbar));

@@ -21,6 +21,7 @@ class MyTable extends Component {
             <tr key={i}>
               <TableRowCell>{order.id}</TableRowCell>
               <TableRowCell>{order.car}</TableRowCell>
+              <TableRowCell>@{order.username}</TableRowCell>
               <TableRowCell>{order.start}</TableRowCell>
               <TableRowCell>{order.till}</TableRowCell>
               <TableRowCell>{order.status}</TableRowCell>
@@ -44,6 +45,7 @@ class MyTable extends Component {
         <tr>
           <TableHead>#</TableHead>
           <TableHead>Car</TableHead>
+          <TableHead>User</TableHead>
           <TableHead>From</TableHead>
           <TableHead>Till</TableHead>
           <TableHead>Status</TableHead>

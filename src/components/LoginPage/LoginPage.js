@@ -10,7 +10,7 @@ class LoginPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
+      email: "",
       password: "",
       submitted: false
     };
@@ -24,16 +24,16 @@ class LoginPage extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     this.setState({ submitted: true });
-    const { username, password } = this.state;
-    if (username && password) {
-      let user = { username: username, password: password };
+    const { email, password } = this.state;
+    if (email && password) {
+      let user = { auth: { email: email, password: password } };
       console.log(user);
       this.props.onLogin(user);
     }
   };
 
   render() {
-    const { username, password, submitted } = this.state;
+    const { email, password, submitted } = this.state;
     return (
       <Container fluid={true}>
         <div className={classes.LoginPage_Wrapper}>
@@ -41,14 +41,14 @@ class LoginPage extends React.Component {
             <FormGroup>
               <Input
                 type="email"
-                name="username"
-                placeholder="Username"
-                value={username}
+                name="email"
+                placeholder="Email"
+                value={email}
                 onChange={this.handleChange}
                 className={classes.LoginPage_Input + " form-control-lg"}
               />
-              {submitted && !username && (
-                <div className="help-block">Username is required</div>
+              {submitted && !email && (
+                <div className="help-block">Email is required</div>
               )}
             </FormGroup>
             <FormGroup>

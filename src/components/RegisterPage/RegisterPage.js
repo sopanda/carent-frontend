@@ -12,8 +12,8 @@ class RegisterPage extends Component {
     super(props);
     this.state = {
       user: {
-        firstName: "",
-        lastName: "",
+        first_name: "",
+        last_name: "",
         email: "",
         username: "",
         password: ""
@@ -38,8 +38,8 @@ class RegisterPage extends Component {
     this.setState({ submitted: true });
     const { user } = this.state;
     if (
-      user.firstName &&
-      user.lastName &&
+      user.first_name &&
+      user.last_name &&
       user.username &&
       user.password &&
       user.email
@@ -60,26 +60,26 @@ class RegisterPage extends Component {
               <FormGroup>
                 <Input
                   type="text"
-                  name="firstName"
+                  name="first_name"
                   placeholder="First name"
                   value={user.firstName}
                   onChange={this.handleChange}
                   className={classes.RegisterPage_Input + " form-control-lg"}
                 />
-                {submitted && !user.firstName && (
+                {submitted && !user.first_name && (
                   <div className="help-block">First Name is required</div>
                 )}
               </FormGroup>
               <FormGroup>
                 <Input
                   type="text"
-                  name="lastName"
+                  name="last_name"
                   placeholder="Last name"
                   value={user.lastName}
                   onChange={this.handleChange}
                   className={classes.RegisterPage_Input + " form-control-lg"}
                 />
-                {submitted && !user.lastName && (
+                {submitted && !user.last_name && (
                   <div className="help-block">Last Name is required</div>
                 )}
               </FormGroup>
