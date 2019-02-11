@@ -79,3 +79,17 @@ export function logout() {
     type: "LOGOUT"
   };
 }
+
+export function fetchUserById(id) {
+  return {
+    type: "FETCH_USER_BY_ID",
+    payload: axios
+      .get(`/users/${id}`)
+      .then(res => {
+        return res.data;
+      })
+      .catch(function(error) {
+        console.log(error);
+      })
+  };
+}

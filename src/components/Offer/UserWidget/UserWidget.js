@@ -4,6 +4,7 @@ import classes from "./UserWidget.module.css";
 import MyButton from "../../MyButton/MyButton";
 
 const UserWidget = props => {
+  console.log(props);
   return (
     <Fragment>
       <Card className={classes.UserWidget_Card + " " + props.className}>
