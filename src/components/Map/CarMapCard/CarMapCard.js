@@ -25,7 +25,7 @@ const MyCard = styled(Card)`
 const Title = styled(CardTitle)`
   font-size: 16px;
   text-align: center;
-  padding-top: 10px;
+  padding-top: 24px;
   text-transform: uppercase;
 `;
 
@@ -59,7 +59,7 @@ const Img = styled(CardImg)`
 
 class CarMapCard extends Component {
   render() {
-    const { model, daily_price, photo } = this.props.car;
+    const { model, daily_price, photo, start_date, end_date } = this.props.car;
     const { first_name, last_name } = this.props.car.owner;
     const { road, house_number } = this.props.car.address;
     return (
@@ -71,10 +71,14 @@ class CarMapCard extends Component {
               <MyButton title="Show offer" />
             </MyLink>
           </Hero>
-          <CardBody>
+          <CardBody className={classes.Card_Body}>
             <Title>{model}</Title>
             <CardText tag="div">
               <List>
+                <ListItem>
+                  <strong>Available</strong>
+                  {`: ${start_date} - ${end_date}`}
+                </ListItem>
                 <ListItem>
                   <strong>Owner</strong>: {first_name + " " + last_name}
                 </ListItem>
