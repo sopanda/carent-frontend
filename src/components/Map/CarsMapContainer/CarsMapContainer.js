@@ -1,11 +1,11 @@
 import React, { Component, Fragment } from "react";
 import CarsMap from "../CarsMap/CarsMap";
+import { connect } from "react-redux";
 
 class CarsMapContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cars: [],
       location: this.props.location,
       activeMarker: null
     };
@@ -20,15 +20,16 @@ class CarsMapContainer extends Component {
     }
   }
 
-  closeOtherMarkers = uid => {
-    this.setState({ activeMarker: uid });
+  closeOtherMarkers = id => {
+    this.setState({ activeMarker: id });
   };
 
   render() {
+    const { cars } = this.props;
     return (
       <Fragment>
         <CarsMap
-          cars={this.state.cars}
+          cars={cars}
           location={this.state.location}
           googleMapURL={`https://maps.googleapis.com/maps/api/js?key=AIzaSyA8FuWiGjUL8rA-BZ_eJnTpPl2hKqvMRLI&v=3.exp&libraries=geometry,drawing,places`}
           loadingElement={<div style={{ height: `100%` }} />}
@@ -42,4 +43,13 @@ class CarsMapContainer extends Component {
   }
 }
 
-export default CarsMapContainer;
+const mapStateToProps = state => {
+  return {
+    cars: state.cars.cars
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  null
+)(CarsMapContainer);

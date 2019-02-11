@@ -14,6 +14,19 @@ export function cars(state = initialState, action) {
       return {
         fetching: false
       };
+    case "FETCH_CAR_BY_ID_PENDING":
+      return {
+        fetchingCar: true
+      };
+    case "FETCH_CAR_BY_ID_FULFILLED":
+      return {
+        fetchingCar: false,
+        carInfo: action.payload
+      };
+    case "FETCH_CAR_BY_ID_REJECTED":
+      return {
+        fetchingCar: false
+      };
     default:
       return state;
   }

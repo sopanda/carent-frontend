@@ -16,7 +16,7 @@ export class CarMarker extends Component {
           this.props.closeMarkers(null);
         });
       } else {
-        this.props.closeMarkers(this.props.uid);
+        this.props.closeMarkers(this.props.id);
       }
     });
   };
@@ -30,7 +30,7 @@ export class CarMarker extends Component {
       <Marker position={this.props.location} onClick={this.toggleOpen}>
         {this.state.isOpen && this.state.activeMarker ? (
           <InfoWindow max-width={350} defaultPosition={this.props.location}>
-            <CarMapCard />
+            <CarMapCard car={this.props.carInfo} />
           </InfoWindow>
         ) : null}
       </Marker>

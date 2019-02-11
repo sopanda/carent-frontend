@@ -8,11 +8,12 @@ import {
   ListGroup,
   ListGroupItem
 } from "reactstrap";
-import CarImageTmp from "../../../assets/cars/audiA6.jpg";
+// import CarImageTmp from "../../../assets/cars/audiA6.jpg";
 import { Link } from "react-router-dom";
 import classes from "./CarMapCard.module.css";
 import styled from "styled-components";
 import MyButton from "../../MyButton/MyButton";
+import { connect } from "react-redux";
 
 const MyCard = styled(Card)`
   max-width: 234px;
@@ -24,6 +25,7 @@ const MyCard = styled(Card)`
 const Title = styled(CardTitle)`
   font-size: 16px;
   text-align: center;
+  padding-top: 10px;
   text-transform: uppercase;
 `;
 
@@ -55,32 +57,32 @@ const Img = styled(CardImg)`
   height: auto;
 `;
 
-export class CarMapCard extends Component {
+class CarMapCard extends Component {
   render() {
+    const { model, daily_price, photo } = this.props.car;
+    const { first_name, last_name } = this.props.car.owner;
+    const { road, house_number } = this.props.car.address;
     return (
       <Fragment>
         <MyCard className={classes.Card}>
           <Hero>
-            <Img alt="Car" src={CarImageTmp} />
+            <Img alt="Car" src={photo} />
             <MyLink to="/offer">
               <MyButton title="Show offer" />
             </MyLink>
           </Hero>
           <CardBody>
-            <Title>Audi A6 </Title>
+            <Title>{model}</Title>
             <CardText tag="div">
               <List>
                 <ListItem>
-                  <strong>Owner</strong>: Mike Harisson
+                  <strong>Owner</strong>: {first_name + " " + last_name}
                 </ListItem>
                 <ListItem>
-                  <strong>Status</strong>: Available
+                  <strong>Price</strong>: {daily_price}$ per day
                 </ListItem>
                 <ListItem>
-                  <strong>Price</strong>: 50$ per day
-                </ListItem>
-                <ListItem>
-                  <strong>Address</strong>: 270 W 43rd St, New York, NY 10036
+                  <strong>Address</strong>: {road + ", " + house_number}
                 </ListItem>
               </List>
             </CardText>
@@ -91,4 +93,13 @@ export class CarMapCard extends Component {
   }
 }
 
-export default CarMapCard;
+const mapStateToProps = state => {
+  return {
+    cars: state.cars.cars
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  null
+)(CarMapCard);
