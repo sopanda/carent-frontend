@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { Table } from "reactstrap";
 import styled from "styled-components";
+import CarsModal from "../../components/Modals/CarModal/CarModal";
+import { connect } from "react-redux";
+import { deleteCarById } from "../../actions/cars.actions";
 
 const TableHead = styled.th`
   border-top: none !important;
@@ -21,8 +24,14 @@ const TableRow = styled.tr`
 `;
 
 class MyTable extends Component {
-  handleCarRowClick = id => {
-    console.log(id);
+  constructor(props) {
+    super(props);
+    this.child = React.createRef();
+  }
+
+  handleCarRowClick = car => {
+    this.child.current.toggle();
+    this.child.current.handleCar(car);
   };
 
   render() {
@@ -42,16 +51,17 @@ class MyTable extends Component {
           ))
         : null;
     } else {
-      information = data.length
-        ? data.map((car, i) => (
-            <TableRow key={i} onClick={() => this.handleCarRowClick(car.id)}>
-              <TableRowCell>{car.id}</TableRowCell>
-              <TableRowCell>{car.model}</TableRowCell>
-              <TableRowCell>{car.year}</TableRowCell>
-              <TableRowCell>{car.status}</TableRowCell>
-            </TableRow>
-          ))
-        : null;
+      information =
+        data !== undefined
+          ? data.map((car, i) => (
+              <TableRow key={i} onClick={() => this.handleCarRowClick(car)}>
+                <TableRowCell>{car.id}</TableRowCell>
+                <TableRowCell>{car.model}</TableRowCell>
+                <TableRowCell>{car.year}</TableRowCell>
+                <TableRowCell>{car.status}</TableRowCell>
+              </TableRow>
+            ))
+          : null;
     }
 
     const headers =
@@ -76,9 +86,22 @@ class MyTable extends Component {
       <Table>
         <thead>{headers}</thead>
         <tbody>{information}</tbody>
+        <CarsModal
+          ref={this.child}
+          deleteCarById={this.props.onDeleteCarById}
+        />
       </Table>
     );
   }
 }
 
-export default MyTable;
+const mapDispatchToProps = dispatch => {
+  return {
+    onDeleteCarById: id => dispatch(deleteCarById(id))
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(MyTable);

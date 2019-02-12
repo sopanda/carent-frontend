@@ -49,7 +49,11 @@ export function cars(state = initialState, action) {
         ...state,
         fetchingCars: false
       };
-
+    case "DELETE_CAR_BY_ID_FULFILLED":
+      return {
+        ...state,
+        deleted: action.payload
+      };
     default:
       return state;
   }

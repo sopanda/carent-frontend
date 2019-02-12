@@ -41,3 +41,26 @@ export function fetchMyCars() {
       })
   };
 }
+
+export function deleteCarById(id) {
+  return dispatch => {
+    dispatch(deleteById(id));
+    setTimeout(() => {
+      dispatch(fetchMyCars());
+    }, 1000);
+  };
+
+  function deleteById(id) {
+    return {
+      type: "DELETE_CAR_BY_ID",
+      payload: axios
+        .get(`/cars/${id}`) //change to delete
+        .then(res => {
+          return res.data;
+        })
+        .catch(function(error) {
+          console.log(error);
+        })
+    };
+  }
+}

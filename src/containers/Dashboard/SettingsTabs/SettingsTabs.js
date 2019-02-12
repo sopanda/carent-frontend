@@ -31,8 +31,8 @@ class SettingsTabs extends Component {
             <Col md="2">
               <TabList>
                 <Tab>Requests</Tab>
-                <Tab>Orders</Tab>
-                <Tab>Cars</Tab>
+                <Tab>My orders</Tab>
+                <Tab>My cars</Tab>
                 <Tab>Verify account</Tab>
               </TabList>
             </Col>
