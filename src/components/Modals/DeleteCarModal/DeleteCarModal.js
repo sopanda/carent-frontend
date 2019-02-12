@@ -1,16 +1,25 @@
 import React, { Component } from "react";
 import { Modal, ModalBody, ModalFooter } from "reactstrap";
 import ReactDOM from "react-dom";
-import classes from "./CarModal.module.css";
+import classes from "./DeleteCarModal.module.css";
 import MyButton from "../../MyButton/MyButton";
 
-class CarModal extends Component {
+class DeleteCarModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
       modal: false,
       car: null
     };
+  }
+
+  componentWillMount() {
+    this.root = document.createElement("div");
+    document.body.appendChild(this.root);
+  }
+
+  componentWillUnmount() {
+    document.body.removeChild(this.root);
   }
 
   toggle = () => {
@@ -26,7 +35,6 @@ class CarModal extends Component {
   handleDeleteCar = (id, status) => {
     if (status !== "in use") {
       this.props.deleteCarById(id);
-      console.log(this.props);
     }
   };
 
@@ -53,10 +61,10 @@ class CarModal extends Component {
               <MyButton onClick={this.toggle} title={"Cancel"} />
             </ModalFooter>
           </Modal>,
-          document.getElementById("portal")
+          this.root
         )
       : null;
   }
 }
 
-export default CarModal;
+export default DeleteCarModal;

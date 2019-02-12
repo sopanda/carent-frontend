@@ -2,6 +2,7 @@ import React, { Fragment, Component } from "react";
 import MyTable from "../../../../components/MyTable/MyTable";
 import MyButton from "../../../../components/MyButton/MyButton";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const NewCar = styled(MyButton)`
   max-width: fit-content;
@@ -31,7 +32,9 @@ class CarsPanel extends Component {
     return (
       <Fragment>
         <MyTable data={this.props.cars} type="cars" />
-        <NewCar title="Add new car" />
+        <Link to="/new_car">
+          <NewCar title="Create new car" />
+        </Link>
       </Fragment>
     );
   }

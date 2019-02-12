@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Table } from "reactstrap";
 import styled from "styled-components";
-import CarsModal from "../../components/Modals/CarModal/CarModal";
+import DeleteCarModal from "../../components/Modals/DeleteCarModal/DeleteCarModal";
 import { connect } from "react-redux";
 import { deleteCarById } from "../../actions/cars.actions";
 
@@ -86,7 +86,7 @@ class MyTable extends Component {
       <Table>
         <thead>{headers}</thead>
         <tbody>{information}</tbody>
-        <CarsModal
+        <DeleteCarModal
           ref={this.child}
           deleteCarById={this.props.onDeleteCarById}
         />

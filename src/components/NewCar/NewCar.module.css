@@ -1,0 +1,23 @@
+.NewCar_Wrapper {
+  width: 100%;
+}
+
+.NewCar_Input,
+.NewCar_Input:focus {
+  background-color: #082336 !important;
+  border-color: #48a1e3 !important;
+  max-height: 40px !important;
+  height: 100% !important;
+  font-size: 16px !important;
+  color: #48a1e3 !important;
+}
+
+.NewCar_Input::placeholder {
+  color: #48a1e3 !important;
+  font-size: 16px;
+}
+
+.NewCar_ButtonGroup {
+  text-align: right;
+  margin-top: 20px;
+}

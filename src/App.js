@@ -12,6 +12,7 @@ import AboutPage from "./components/AboutPage/AboutPage";
 import ContactPage from "./components/ContactPage/ContactPage";
 import { history } from "./helpers/history";
 import UserProfile from "./components/UserProfile/UserProfile";
+import NewCar from "./components/NewCar/NewCar";
 
 class App extends Component {
   render() {
@@ -25,6 +26,7 @@ class App extends Component {
               <PrivateRoute exact path="/" component={Home} />
               <PrivateRoute exact path="/offer/:id" component={Offer} />
               <PrivateRoute exact path="/users/:id" component={UserProfile} />
+              <PrivateRoute exact path="/new_car" component={NewCar} />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
               <PrivateRoute exact path="/contact" component={ContactPage} />
               <PrivateRoute exact path="/about" component={AboutPage} />

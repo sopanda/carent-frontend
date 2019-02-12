@@ -73,11 +73,11 @@ const OrderPanel = props => {
           <Tab>Complete</Tab>
         </TabList>
         <TabPanel>
-          <MyTable data={orders_comp} />
+          <MyTable data={orders_in} />
           <NewOffer title="Create new offer" />
         </TabPanel>
         <TabPanel>
-          <MyTable data={orders_in} />
+          <MyTable data={orders_comp} />
           <NewOffer title="Create new offer" />
         </TabPanel>
       </RowTabs>
