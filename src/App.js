@@ -11,6 +11,7 @@ import RegisterPage from "./components/RegisterPage/RegisterPage";
 import AboutPage from "./components/AboutPage/AboutPage";
 import ContactPage from "./components/ContactPage/ContactPage";
 import { history } from "./helpers/history";
+import UserProfile from "./components/UserProfile/UserProfile";
 
 class App extends Component {
   render() {
@@ -23,6 +24,7 @@ class App extends Component {
               <Route path="/register" component={RegisterPage} />
               <PrivateRoute exact path="/" component={Home} />
               <PrivateRoute exact path="/offer/:id" component={Offer} />
+              <PrivateRoute exact path="/users/:id" component={UserProfile} />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
               <PrivateRoute exact path="/contact" component={ContactPage} />
               <PrivateRoute exact path="/about" component={AboutPage} />

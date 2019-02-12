@@ -29,7 +29,7 @@ const cars = [
 const CarsPanel = props => {
   return (
     <Fragment>
-      <MyTable data={cars} type="cars" />
+      <MyTable data={props.cars} type="cars" />
       <NewCar title="Add new car" />
     </Fragment>
   );

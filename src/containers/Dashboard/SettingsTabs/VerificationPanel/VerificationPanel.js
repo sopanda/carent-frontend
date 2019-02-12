@@ -48,6 +48,7 @@ class VerificationPanel extends Component {
 
   render() {
     const { selectedFileName } = this.state;
+    const { user } = this.props;
     return (
       <Wrapper>
         <Row>
@@ -70,7 +71,7 @@ class VerificationPanel extends Component {
             </UploadingWrapper>
           </Col>
           <Col md="4" sm="12">
-            <UserWidget />
+            <UserWidget owner={user} />
           </Col>
         </Row>
       </Wrapper>

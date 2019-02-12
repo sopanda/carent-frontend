@@ -80,11 +80,45 @@ export function logout() {
   };
 }
 
-export function fetchUserById(id) {
+export default function fetchUser(id) {
+  return dispatch => {
+    dispatch(fetchUserById(id));
+    dispatch(fetchUserReviews(id));
+  };
+
+  function fetchUserById(id) {
+    return {
+      type: "FETCH_USER_BY_ID",
+      payload: axios
+        .get(`/users/${id}`)
+        .then(res => {
+          return res.data;
+        })
+        .catch(function(error) {
+          console.log(error);
+        })
+    };
+  }
+  function fetchUserReviews(id) {
+    return {
+      type: "FETCH_USER_REVIEWS_BY_ID",
+      payload: axios
+        .get(`/users/${id}/reviews`)
+        .then(res => {
+          return res.data;
+        })
+        .catch(function(error) {
+          console.log(error);
+        })
+    };
+  }
+}
+
+export function fetchProfile() {
   return {
-    type: "FETCH_USER_BY_ID",
+    type: "FETCH_PROFILE",
     payload: axios
-      .get(`/users/${id}`)
+      .get(`/profile`)
       .then(res => {
         return res.data;
       })

@@ -27,3 +27,17 @@ export function fetchCarById(id) {
       })
   };
 }
+
+export function fetchMyCars() {
+  return {
+    type: "FETCH_MY_CARS",
+    payload: axios
+      .get(`/my_cars`)
+      .then(res => {
+        return res.data;
+      })
+      .catch(function(error) {
+        console.log(error);
+      })
+  };
+}

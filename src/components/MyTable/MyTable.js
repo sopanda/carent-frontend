@@ -11,31 +11,45 @@ const TableRowCell = styled.th`
   border-top: 1px solid #3de6af !important;
 `;
 
+const TableRow = styled.tr`
+  &:hover {
+    background-color: #32bb8d;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+    cursor: pointer;
+  }
+`;
+
 class MyTable extends Component {
+  handleCarRowClick = id => {
+    console.log(id);
+  };
+
   render() {
     const { data, type } = this.props;
     let information;
     if (type !== "cars") {
       information = data.length
         ? data.map((order, i) => (
-            <tr key={i}>
+            <TableRow key={i}>
               <TableRowCell>{order.id}</TableRowCell>
               <TableRowCell>{order.car}</TableRowCell>
               <TableRowCell>@{order.username}</TableRowCell>
               <TableRowCell>{order.start}</TableRowCell>
               <TableRowCell>{order.till}</TableRowCell>
               <TableRowCell>{order.status}</TableRowCell>
-            </tr>
+            </TableRow>
           ))
         : null;
     } else {
       information = data.length
         ? data.map((car, i) => (
-            <tr key={i}>
+            <TableRow key={i} onClick={() => this.handleCarRowClick(car.id)}>
               <TableRowCell>{car.id}</TableRowCell>
-              <TableRowCell>{car.car}</TableRowCell>
+              <TableRowCell>{car.model}</TableRowCell>
+              <TableRowCell>{car.year}</TableRowCell>
               <TableRowCell>{car.status}</TableRowCell>
-            </tr>
+            </TableRow>
           ))
         : null;
     }
@@ -54,6 +68,7 @@ class MyTable extends Component {
         <tr>
           <TableHead>#</TableHead>
           <TableHead>Car</TableHead>
+          <TableHead>Year</TableHead>
           <TableHead>Status</TableHead>
         </tr>
       );
