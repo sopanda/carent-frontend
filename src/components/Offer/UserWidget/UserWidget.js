@@ -11,13 +11,9 @@ const UserWidget = props => {
         <CardBody>
           <div className={classes.Image} />
           <CardTitle>
-            {/*`${props.owner.first_name} ${props.owner.last_name}`*/}
-            Mr Kevin Jackson
+            {`${props.owner.first_name} ${props.owner.last_name}`}
           </CardTitle>
-          <CardSubtitle>
-            {/*`@${props.owner.username}`*/}
-            Account status: Verified
-          </CardSubtitle>
+          <CardSubtitle>Account status: Verified</CardSubtitle>
           {props.btnTitle && (
             <div className={classes.SendBtn}>
               <MyButton title={props.btnTitle} />

@@ -25,6 +25,22 @@ const car = {
 };
 
 const OfferDescription = props => {
+  const {
+    model,
+    start_date,
+    end_date,
+    photo,
+    color,
+    child_seat,
+    fuel_type,
+    doors,
+    daily_price,
+    description,
+    year,
+    mileage,
+    transmission
+  } = props.offer;
+  const { road, house_number, city, postcode } = props.offer.address;
   return (
     <Fragment>
       <Card className={classes.Card}>
@@ -35,49 +51,36 @@ const OfferDescription = props => {
           alt="Card image cap"
         />
         <CardBody>
-          <CardTitle>Ford Focus</CardTitle>
+          <CardTitle>{model}</CardTitle>
           <CardSubtitle>
-            Available: 14:30 | 26.02.2019 - 14:30 | 28.02.2019 <br />
-            Price: 50$ per day
+            {`Available: ${start_date} - ${end_date}`} <br />
+            {`Price: ${daily_price}$ per day`} <br />
+            {`Pick up address: ${road} ${house_number}, ${city}, ${postcode} `}
           </CardSubtitle>
           <div className={classes.Columns_Wrapper}>
             <Row>
               <Col xs="12" md="6">
-                <div className={classes.Car_Attribute}>Model : {car.model}</div>
-                <div className={classes.Car_Attribute}>Doors : {car.doors}</div>
-                <div className={classes.Car_Attribute}>Color : {car.color}</div>
+                <div className={classes.Car_Attribute}>Model : {model}</div>
+                <div className={classes.Car_Attribute}>Doors : {doors}</div>
+                <div className={classes.Car_Attribute}>Color : {color}</div>
                 <div className={classes.Car_Attribute}>
                   Air conditioner : {car.air}
                 </div>
                 <div className={classes.Car_Attribute}>
-                  Kid chair : {car.kid_chair}
+                  Kid chair : {child_seat ? "yes" : "no"}
                 </div>
               </Col>
               <Col xs="12" md="6">
                 <div className={classes.Car_Attribute}>
-                  Country : {car.country}
+                  Transmission : {transmission}
                 </div>
-                <div className={classes.Car_Attribute}>
-                  Transmission : {car.transmission}
-                </div>
-                <div className={classes.Car_Attribute}>Fuel : {car.fuel}</div>
-                <div className={classes.Car_Attribute}>
-                  Mileage : {car.mileage}
-                </div>
-                <div className={classes.Car_Attribute}>Year : {car.year}</div>
+                <div className={classes.Car_Attribute}>Fuel : {fuel_type}</div>
+                <div className={classes.Car_Attribute}>Mileage : {mileage}</div>
+                <div className={classes.Car_Attribute}>Year : {year}</div>
               </Col>
             </Row>
           </div>
-          <CardText className={classes.Summary}>
-            Lorem ipsum dolor sit amet, velit qualisque quo ut, pro debitis
-            euripidis comprehensam ex. Mea pertinacia interpretaris te, vel at
-            stet erat, novum invidunt ne vix. Exerci quodsi pro id, vero vidit
-            munere pro ei. Duo populo integre vulputate et. Vitae delicata
-            repudiare id nec, aperiri docendi verterem sed et, at magna eripuit
-            mel. Ne diceret docendi rationibus ius. Veri error phaedrum mel ei.
-            Vim diam democritum et. Usu soluta lucilius scripserit ex, cu agam
-            quidam nec.
-          </CardText>
+          <CardText className={classes.Summary}>{description}</CardText>
         </CardBody>
       </Card>
     </Fragment>
