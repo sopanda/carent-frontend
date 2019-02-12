@@ -59,7 +59,14 @@ const Img = styled(CardImg)`
 
 class CarMapCard extends Component {
   render() {
-    const { model, daily_price, photo, start_date, end_date } = this.props.car;
+    const {
+      model,
+      daily_price,
+      photo,
+      start_date,
+      end_date,
+      id
+    } = this.props.car;
     const { first_name, last_name } = this.props.car.owner;
     const { road, house_number } = this.props.car.address;
     return (
@@ -67,7 +74,7 @@ class CarMapCard extends Component {
         <MyCard className={classes.Card}>
           <Hero>
             <Img alt="Car" src={photo} />
-            <MyLink to="/offer">
+            <MyLink to={`/offer/${id}`}>
               <MyButton title="Show offer" />
             </MyLink>
           </Hero>

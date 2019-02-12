@@ -1,5 +1,7 @@
 .Toolbar {
   background-color: #082336;
+  position: relative;
+  z-index: 100;
 }
 
 .Navbar {

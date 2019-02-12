@@ -4,10 +4,23 @@ import UserWidget from "./UserWidget/UserWidget";
 import { Container, Col, Row } from "reactstrap";
 import Comments from "../Comments/Comments";
 import classes from "./Offer.module.css";
+import { connect } from "react-redux";
+import { fetchOfferById } from "../../actions/offer.actions";
+import Spinner from "../Spinner/Spinner";
 
 class Offer extends Component {
+  componentWillMount() {
+    const { id } = this.props.match.params;
+    this.props.onFetchOfferById(id);
+  }
+
+  shouldComponentUpdate = nextProps => {
+    return nextProps.offer !== this.props.offer;
+  };
+
   render() {
-    return (
+    const { offer } = this.props;
+    return offer ? (
       <Container>
         <div className={classes.Offer_Wrapper}>
           <Row>
@@ -21,8 +34,24 @@ class Offer extends Component {
           </Row>
         </div>
       </Container>
+    ) : (
+      <Spinner />
     );
   }
 }
 
-export default Offer;
+const mapStateToProps = state => {
+  return {
+    offer: state.offer.offerInfo
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onFetchOfferById: id => dispatch(fetchOfferById(id))
+  };
+};
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Offer);
