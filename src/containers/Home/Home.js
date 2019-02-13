@@ -3,6 +3,7 @@ import CarsMapContainer from "../../components/Map/CarsMapContainer/CarsMapConta
 import GeoLocation from "../../components/GeoLocation/GeoLocation";
 import { connect } from "react-redux";
 import { fetchAllCars } from "../../actions/cars.actions";
+import { setMyLocation } from "../../actions/user.actions";
 
 class Home extends Component {
   constructor(props) {
@@ -27,6 +28,7 @@ class Home extends Component {
   componentDidUpdate(prevState) {
     if (prevState.location !== this.state.location) {
       this.props.onFetchCars(this.state.location);
+      this.props.onSetMyLocation(this.state.location);
     }
   }
 
@@ -47,7 +49,8 @@ class Home extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onFetchCars: location => dispatch(fetchAllCars(location))
+    onFetchCars: location => dispatch(fetchAllCars(location)),
+    onSetMyLocation: location => dispatch(setMyLocation(location))
   };
 };
 

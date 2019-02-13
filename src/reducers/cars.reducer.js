@@ -54,6 +54,22 @@ export function cars(state = initialState, action) {
         ...state,
         deleted: action.payload
       };
+
+    case "CREATE_NEW_CAR_PENDING":
+      return {
+        ...state,
+        creatingCar: true
+      };
+    case "CREATE_NEW_CAR_FULFILLED":
+      return {
+        ...state,
+        creatingCar: false
+      };
+    case "CREATE_NEW_CAR_REJECTED":
+      return {
+        ...state,
+        creatingCar: false
+      };
     default:
       return state;
   }

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import {
   Container,
   Form,
@@ -16,6 +17,7 @@ import Title from "../Title/Title";
 import MyButton from "../MyButton/MyButton";
 import classes from "./NewCar.module.css";
 import styled from "styled-components";
+import { createNewCar } from "../../actions/cars.actions";
 
 const Toggler = styled(DropdownToggle)`
   margin-left: 20px;
@@ -27,6 +29,7 @@ const Toggler = styled(DropdownToggle)`
 class NewCar extends Component {
   constructor(props) {
     super(props);
+    const { latitude, longitude } = this.props.location;
     this.state = {
       car: {
         model: "",
@@ -38,7 +41,10 @@ class NewCar extends Component {
         daily_price: "",
         year: "",
         mileage: "",
-        transmission: "auto"
+        transmission: "auto",
+        latitude: latitude,
+        longitude: longitude,
+        status: "pending"
       },
       submitted: false
     };
@@ -58,7 +64,8 @@ class NewCar extends Component {
     e.preventDefault();
     this.setState({ submitted: true });
     const { car } = this.state;
-    console.log(car);
+    this.props.onCreateNewCar(car);
+    this.props.history.push("/dashboard");
   };
 
   selectChildSeat = e => {
@@ -124,6 +131,7 @@ class NewCar extends Component {
       transmission,
       submitted
     } = this.state.car;
+
     return (
       <Container fluid={true}>
         <Row>
@@ -303,15 +311,21 @@ class NewCar extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {};
-}
-
-const mapDispatchToProps = dispatch => {
-  return {};
+const mapStateToProps = state => {
+  return {
+    location: state.user.myLocation
+  };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(NewCar);
+const mapDispatchToProps = dispatch => {
+  return {
+    onCreateNewCar: car => dispatch(createNewCar(car))
+  };
+};
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(NewCar)
+);

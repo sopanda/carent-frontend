@@ -22,6 +22,10 @@ class SettingsTabs extends Component {
     this.props.onFetchMyCars();
   };
 
+  shouldComponentUpdate = nextProps => {
+    return nextProps.myCars !== this.props.myCars;
+  };
+
   render() {
     const { profile, myCars } = this.props;
     return (

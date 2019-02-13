@@ -5,10 +5,16 @@ const initialState = {
   fetchedUserReviews: false,
   userInfo: {},
   userReviews: [],
-  profile: {}
+  profile: {},
+  myLocation: {}
 };
 export function user(state = initialState, action) {
   switch (action.type) {
+    case "SET_MY_LOCATION":
+      return {
+        ...state,
+        myLocation: action.payload
+      };
     case "FETCH_USER_BY_ID_PENDING":
       return {
         ...state,

@@ -127,3 +127,10 @@ export function fetchProfile() {
       })
   };
 }
+
+export function setMyLocation({ latitude, longitude }) {
+  return {
+    type: "SET_MY_LOCATION",
+    payload: { latitude: latitude, longitude: longitude }
+  };
+}

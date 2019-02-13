@@ -64,3 +64,23 @@ export function deleteCarById(id) {
     };
   }
 }
+
+export function createNewCar(car) {
+  return dispatch => {
+    dispatch(createCar(car));
+  };
+
+  function createCar(car) {
+    return {
+      type: "CREATE_NEW_CAR",
+      payload: axios
+        .post(`/cars/`, car)
+        .then(res => {
+          console.log(res.data);
+        })
+        .catch(function(error) {
+          console.log(error);
+        })
+    };
+  }
+}
