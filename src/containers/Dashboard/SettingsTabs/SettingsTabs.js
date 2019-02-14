@@ -15,6 +15,7 @@ import { connect } from "react-redux";
 import { fetchProfile } from "../../../actions/user.actions";
 import { fetchMyCars } from "../../../actions/cars.actions";
 import { SettingsTitle } from "../../../components/SettingsTitle/SettingsTitle";
+import Spinner from "../../../components/Spinner/Spinner";
 
 class SettingsTabs extends Component {
   componentDidMount = () => {
@@ -27,7 +28,7 @@ class SettingsTabs extends Component {
   };
 
   render() {
-    const { profile, myCars } = this.props;
+    const { profile, myCars, isCarsFetched } = this.props;
     return (
       <Tabs>
         <Container>
@@ -51,7 +52,7 @@ class SettingsTabs extends Component {
                 <OrderPanel />
               </TabPanel>
               <TabPanel>
-                <CarsPanel cars={myCars} />
+                {!isCarsFetched ? <CarsPanel cars={myCars} /> : <Spinner />}
               </TabPanel>
               <TabPanel>
                 <VerificationPanel user={profile} />
@@ -67,7 +68,8 @@ class SettingsTabs extends Component {
 const mapStateToProps = state => {
   return {
     profile: state.user.profile,
-    myCars: state.cars.myCars
+    myCars: state.cars.myCars,
+    isCarsFetched: state.cars.fetchingCars
   };
 };
 

@@ -3,6 +3,7 @@ import { Modal, ModalBody, ModalFooter } from "reactstrap";
 import ReactDOM from "react-dom";
 import classes from "./DeleteCarModal.module.css";
 import MyButton from "../../MyButton/MyButton";
+import { toast, ToastContainer } from "react-toastify";
 
 class DeleteCarModal extends Component {
   constructor(props) {
@@ -12,6 +13,17 @@ class DeleteCarModal extends Component {
       car: null
     };
   }
+
+  notify = () => {
+    toast.error("You can't delete car if it's in use", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: false
+    });
+  };
 
   componentWillMount() {
     this.root = document.createElement("div");
@@ -35,6 +47,10 @@ class DeleteCarModal extends Component {
   handleDeleteCar = (id, status) => {
     if (status !== "in use") {
       this.props.deleteCarById(id);
+      this.toggle();
+    } else {
+      this.notify();
+      this.toggle();
     }
   };
 
@@ -60,6 +76,7 @@ class DeleteCarModal extends Component {
               />
               <MyButton onClick={this.toggle} title={"Cancel"} />
             </ModalFooter>
+            <ToastContainer />
           </Modal>,
           this.root
         )

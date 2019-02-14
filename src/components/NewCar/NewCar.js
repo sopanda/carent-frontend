@@ -44,7 +44,7 @@ class NewCar extends Component {
         transmission: "auto",
         latitude: latitude,
         longitude: longitude,
-        status: "pending"
+        air_conditioner: false
       },
       submitted: false
     };
@@ -82,6 +82,25 @@ class NewCar extends Component {
         car: {
           ...prevState.car,
           child_seat: false
+        }
+      }));
+    }
+  };
+
+  selectAirCon = e => {
+    const { innerText } = e.target;
+    if (innerText === "yes") {
+      this.setState(prevState => ({
+        car: {
+          ...prevState.car,
+          air_conditioner: true
+        }
+      }));
+    } else {
+      this.setState(prevState => ({
+        car: {
+          ...prevState.car,
+          air_conditioner: false
         }
       }));
     }
@@ -129,7 +148,8 @@ class NewCar extends Component {
       year,
       mileage,
       transmission,
-      submitted
+      submitted,
+      air_conditioner
     } = this.state.car;
 
     return (
@@ -237,6 +257,25 @@ class NewCar extends Component {
                         </DropdownMenu>
                       </UncontrolledButtonDropdown>
                       {submitted && !child_seat && (
+                        <div className="help-block">child_seat is required</div>
+                      )}
+                    </FormGroup>
+                    <FormGroup>
+                      <label>Air condition</label>
+                      <UncontrolledButtonDropdown className={classes.Dropdown}>
+                        <Toggler caret>
+                          {air_conditioner ? "yes" : "no"}
+                        </Toggler>
+                        <DropdownMenu>
+                          <DropdownItem onClick={this.selectAirCon}>
+                            yes
+                          </DropdownItem>
+                          <DropdownItem onClick={this.selectAirCon}>
+                            no
+                          </DropdownItem>
+                        </DropdownMenu>
+                      </UncontrolledButtonDropdown>
+                      {submitted && !air_conditioner && (
                         <div className="help-block">child_seat is required</div>
                       )}
                     </FormGroup>

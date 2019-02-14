@@ -1,4 +1,5 @@
 import axios from "../axios-url";
+import { history } from "../helpers/history";
 
 export function fetchAllCars({ latitude, longitude, range }) {
   return {
@@ -9,7 +10,7 @@ export function fetchAllCars({ latitude, longitude, range }) {
         return res.data;
       })
       .catch(function(error) {
-        console.log(error);
+        return error;
       })
   };
 }
@@ -54,8 +55,9 @@ export function deleteCarById(id) {
     return {
       type: "DELETE_CAR_BY_ID",
       payload: axios
-        .get(`/cars/${id}`) //change to delete
+        .delete(`/cars/${id}`) //change to delete
         .then(res => {
+          history.push("/dashboard");
           return res.data;
         })
         .catch(function(error) {
