@@ -4,6 +4,7 @@ import styled from "styled-components";
 import DeleteCarModal from "../../components/Modals/DeleteCarModal/DeleteCarModal";
 import { connect } from "react-redux";
 import { deleteCarById } from "../../actions/cars.actions";
+import CommentCreationModal from "../Modals/CommentCreationModal/CommentCreationModal";
 
 const TableHead = styled.th`
   border-top: none !important;
@@ -27,11 +28,17 @@ class MyTable extends Component {
   constructor(props) {
     super(props);
     this.child = React.createRef();
+    this.commentChild = React.createRef();
   }
 
   handleCarRowClick = car => {
     this.child.current.toggle();
     this.child.current.handleCar(car);
+  };
+
+  handleOrderRowClick = order => {
+    this.commentChild.current.toggle();
+    // this.commentChild.current.handleOrder(order);
   };
 
   render() {
@@ -40,7 +47,14 @@ class MyTable extends Component {
     if (type !== "cars") {
       information = data.length
         ? data.map((order, i) => (
-            <TableRow key={i}>
+            <TableRow
+              key={i}
+              onClick={
+                order.status === "complete"
+                  ? () => this.handleOrderRowClick(order)
+                  : null
+              }
+            >
               <TableRowCell>{order.id}</TableRowCell>
               <TableRowCell>{order.car}</TableRowCell>
               <TableRowCell>@{order.username}</TableRowCell>
@@ -90,6 +104,7 @@ class MyTable extends Component {
           ref={this.child}
           deleteCarById={this.props.onDeleteCarById}
         />
+        <CommentCreationModal ref={this.commentChild} />
       </Table>
     );
   }

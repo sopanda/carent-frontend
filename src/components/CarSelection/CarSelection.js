@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import Select from "react-select";
 import styled from "styled-components";
 
-const ffff = [{ value: 432, label: "hello" }];
-
 const CarSelector = styled(Select)`
   & > div {
     background: #fff;

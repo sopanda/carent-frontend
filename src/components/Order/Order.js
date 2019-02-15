@@ -32,7 +32,11 @@ class Order extends Component {
               <Comments reviews={reviews} />
             </Col>
             <Col md="4">
-              <UserWidget btnTitle="Send request" owner={offer.owner} />
+              <UserWidget
+                btnTitle="Send request"
+                owner={offer.owner}
+                carId={offer.id}
+              />
             </Col>
           </Row>
         </div>
