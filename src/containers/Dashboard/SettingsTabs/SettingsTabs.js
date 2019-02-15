@@ -16,11 +16,13 @@ import { fetchProfile } from "../../../actions/user.actions";
 import { fetchMyCars } from "../../../actions/cars.actions";
 import { SettingsTitle } from "../../../components/SettingsTitle/SettingsTitle";
 import Spinner from "../../../components/Spinner/Spinner";
+import { fetchMyRequests } from "../../../actions/request.actions";
 
 class SettingsTabs extends Component {
   componentDidMount = () => {
     this.props.onFetchProfile();
     this.props.onFetchMyCars();
+    this.props.onFetchRequests();
   };
 
   shouldComponentUpdate = nextProps => {
@@ -28,7 +30,7 @@ class SettingsTabs extends Component {
   };
 
   render() {
-    const { profile, myCars, isCarsFetched } = this.props;
+    const { profile, myCars, isCarsFetched, requests } = this.props;
     return (
       <Tabs>
         <Container>
@@ -45,7 +47,7 @@ class SettingsTabs extends Component {
               <TabPanel>
                 <SettingsTitle>Your offer requests:</SettingsTitle>
                 <Row>
-                  <RequestsPanel />
+                  <RequestsPanel orders={requests} />
                 </Row>
               </TabPanel>
               <TabPanel>
@@ -69,14 +71,16 @@ const mapStateToProps = state => {
   return {
     profile: state.user.profile,
     myCars: state.cars.myCars,
-    isCarsFetched: state.cars.fetchingCars
+    isCarsFetched: state.cars.fetchingCars,
+    requests: state.request.myRequests
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     onFetchProfile: () => dispatch(fetchProfile()),
-    onFetchMyCars: () => dispatch(fetchMyCars())
+    onFetchMyCars: () => dispatch(fetchMyCars()),
+    onFetchRequests: () => dispatch(fetchMyRequests())
   };
 };
 

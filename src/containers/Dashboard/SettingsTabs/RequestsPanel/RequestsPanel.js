@@ -1,7 +1,25 @@
-import React, { Fragment } from "react";
+import React, { Fragment, Component } from "react";
 import { ListGroup, ListGroupItem, Col } from "reactstrap";
 import styled from "styled-components";
 import MyButton from "../../../../components/MyButton/MyButton";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import Spinner from "../../../../components/Spinner/Spinner";
+import {
+  acceptRequest,
+  declineRequests
+} from "../../../../actions/request.actions";
+
+const NavLink = styled(Link)`
+  padding: 0 !important;
+  color: #3de6af;
+  &:hover {
+    color: #32bb8d;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+    text-decoration: none;
+  }
+`;
 
 const RequestWrapper = styled.div`
   max-width: 350px;
@@ -24,26 +42,53 @@ const ButtonGroup = styled.div`
   text-align: center;
 `;
 
-const RequestsPanel = props => {
-  return (
-    <Fragment>
-      <Col md="6">
-        <RequestWrapper>
-          <ListGroup>
-            <ListItem>Order: #4333</ListItem>
-            <ListItem>User: Philly Collins</ListItem>
-            <ListItem>Car: Subaru Imperia</ListItem>
-            <ListItem>From: 14:00 22/09/2019</ListItem>
-            <ListItem>Till: 14:12 25/12/2019</ListItem>
-          </ListGroup>
-          <ButtonGroup>
-            <DecisionButton title="Accept request" />
-            <DecisionButton title="Reject request" />
-          </ButtonGroup>
-        </RequestWrapper>
-      </Col>
-    </Fragment>
-  );
+class RequestsPanel extends Component {
+  render() {
+    return this.props.orders ? (
+      <Fragment>
+        {this.props.orders.map((order, i) => (
+          <Col md="6" key={i}>
+            <RequestWrapper>
+              <ListGroup>
+                <ListItem>Order: {`#${order.id}`}</ListItem>
+                <ListItem>
+                  User:{" "}
+                  <NavLink to={`/users/${order.sender.id}`}>
+                    {order.sender.first_name + " " + order.sender.last_name}
+                  </NavLink>
+                </ListItem>
+                <ListItem>Car: {order.car.model}</ListItem>
+                <ListItem>From: {order.car.start_date}</ListItem>
+                <ListItem>Till: {order.car.end_date}</ListItem>
+              </ListGroup>
+              <ButtonGroup>
+                <DecisionButton
+                  title="Accept request"
+                  onClick={() => this.props.onAccept(order.id)}
+                />
+                <DecisionButton
+                  title="Reject request"
+                  onClick={() => this.props.onDecline(order.id)}
+                />
+              </ButtonGroup>
+            </RequestWrapper>
+          </Col>
+        ))}
+      </Fragment>
+    ) : (
+      <Spinner />
+    );
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onAccept: id => dispatch(acceptRequest(id)),
+    onDecline: id => dispatch(declineRequests(id))
+  };
 };
 
-export default RequestsPanel;
+export default connect(
+  null,
+  mapDispatchToProps
+)(RequestsPanel);

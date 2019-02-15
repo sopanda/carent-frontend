@@ -17,6 +17,32 @@ export function request(state = initialState, action) {
         ...state,
         sending: false
       };
+    case "FETCH_MY_REQUESTS_PENDING":
+      return {
+        ...state,
+        fetching: true
+      };
+    case "FETCH_MY_REQUESTS_FULFILLED":
+      return {
+        ...state,
+        fetching: false,
+        myRequests: action.payload
+      };
+    case "FETCH_MY_REQUESTS_REJECTED":
+      return {
+        ...state,
+        fetching: false
+      };
+    case "ACCEPT_REQUEST_FULFILLED":
+      return {
+        ...state,
+        requestAcceptMsg: action.payload
+      };
+    case "REJECT_REQUEST_FULFILLED":
+      return {
+        ...state,
+        requestDeclineMsg: action.payload
+      };
     default:
       return state;
   }
