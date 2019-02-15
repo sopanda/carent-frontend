@@ -35,7 +35,6 @@ const RequestsPanel = props => {
             <ListItem>Car: Subaru Imperia</ListItem>
             <ListItem>From: 14:00 22/09/2019</ListItem>
             <ListItem>Till: 14:12 25/12/2019</ListItem>
-            <ListItem>Status: accepted</ListItem>
           </ListGroup>
           <ButtonGroup>
             <DecisionButton title="Accept request" />

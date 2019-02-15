@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import UserWidget from "../Offer/UserWidget/UserWidget";
+import UserWidget from "../Order/UserWidget/UserWidget";
 import Comments from "../Comments/Comments";
 import { connect } from "react-redux";
 import fetchUser from "../../actions/user.actions";

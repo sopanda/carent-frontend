@@ -33,3 +33,19 @@ export function fetchOffer(id) {
     };
   }
 }
+
+export function createOffer(id, order) {
+  return {
+    type: "CREATE_OFFER",
+    payload: axios
+      .post(`/cars/${id}/activate`, order)
+      .then(res => {
+        console.log(res.data);
+        return res.data;
+      })
+      .catch(function(error) {
+        console.log(error);
+        return error;
+      })
+  };
+}

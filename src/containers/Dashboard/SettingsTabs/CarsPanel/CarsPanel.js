@@ -9,24 +9,6 @@ const NewCar = styled(MyButton)`
   float: right;
 `;
 
-// const cars = [
-//   {
-//     id: 1,
-//     car: "Audi A6",
-//     status: "in use"
-//   },
-//   {
-//     id: 2,
-//     car: "Subaru Imperia",
-//     status: "available"
-//   },
-//   {
-//     id: 3,
-//     car: "Ferrari",
-//     status: "in use"
-//   }
-// ];
-
 class CarsPanel extends Component {
   render() {
     return (

@@ -1,14 +1,14 @@
 import React, { Component } from "react";
-import OfferDescription from "./OfferDescription/OfferDescription";
+import OfferDescription from "./OrderDescription/OrderDescription";
 import UserWidget from "./UserWidget/UserWidget";
 import { Container, Col, Row } from "reactstrap";
 import Comments from "../Comments/Comments";
-import classes from "./Offer.module.css";
+import classes from "./Order.module.css";
 import { connect } from "react-redux";
 import { fetchOffer } from "../../actions/offer.actions";
 import Spinner from "../Spinner/Spinner";
 
-class Offer extends Component {
+class Order extends Component {
   componentDidMount() {
     const { id } = this.props.match.params;
     this.props.onFetchInfo(id);
@@ -60,4 +60,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Offer);
+)(Order);

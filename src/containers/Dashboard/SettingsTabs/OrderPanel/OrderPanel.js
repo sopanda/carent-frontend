@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import MyTable from "../../../../components/MyTable/MyTable";
 import MyButton from "../../../../components/MyButton/MyButton";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import {
   Tab,
@@ -9,7 +10,7 @@ import {
   Tabs
 } from "../../../../components/TabsStyling/index";
 
-const NewOffer = styled(MyButton)`
+const NewOrder = styled(MyButton)`
   max-width: fit-content;
   float: right;
 `;
@@ -74,12 +75,13 @@ const OrderPanel = props => {
         </TabList>
         <TabPanel>
           <MyTable data={orders_in} />
-          <NewOffer title="Create new offer" />
         </TabPanel>
         <TabPanel>
           <MyTable data={orders_comp} />
-          <NewOffer title="Create new offer" />
         </TabPanel>
+        <Link to="/new_order">
+          <NewOrder title="Create new order" />
+        </Link>
       </RowTabs>
     </Fragment>
   );

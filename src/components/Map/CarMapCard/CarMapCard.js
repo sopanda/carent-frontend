@@ -74,7 +74,7 @@ class CarMapCard extends Component {
         <MyCard className={classes.Card}>
           <Hero>
             <Img alt="Car" src={photo} />
-            <MyLink to={`/offer/${id}`}>
+            <MyLink to={`/order/${id}`}>
               <MyButton title="Show offer" />
             </MyLink>
           </Hero>

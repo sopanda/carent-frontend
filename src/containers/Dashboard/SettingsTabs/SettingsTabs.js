@@ -49,7 +49,7 @@ class SettingsTabs extends Component {
                 </Row>
               </TabPanel>
               <TabPanel>
-                <OrderPanel />
+                <OrderPanel cars={myCars} />
               </TabPanel>
               <TabPanel>
                 {!isCarsFetched ? <CarsPanel cars={myCars} /> : <Spinner />}

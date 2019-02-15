@@ -35,6 +35,22 @@ export function offer(state = initialState, action) {
         ...state,
         fetchingReviews: false
       };
+    case "CREATE_OFFER_PENDING":
+      return {
+        ...state,
+        creatingOffer: true
+      };
+    case "CREATE_OFFER_FULFILLED":
+      return {
+        ...state,
+        creatingOffer: false,
+        messageAfterCreation: action.payload
+      };
+    case "CREATE_OFFER_REJECTED":
+      return {
+        ...state,
+        creatingOffer: false
+      };
     default:
       return state;
   }

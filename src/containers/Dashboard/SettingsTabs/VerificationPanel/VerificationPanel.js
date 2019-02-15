@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import UserWidget from "../../../../components/Offer/UserWidget/UserWidget";
+import UserWidget from "../../../../components/Order/UserWidget/UserWidget";
 import styled from "styled-components";
 import { CustomInput, Row, Col, InputGroup } from "reactstrap";
 import MyButton from "../../../../components/MyButton/MyButton";

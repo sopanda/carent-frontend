@@ -9,9 +9,9 @@ import {
   Row,
   Col
 } from "reactstrap";
-import classes from "./OfferDescription.module.css";
+import classes from "./OrderDescription.module.css";
 
-const OfferDescription = props => {
+const OrderDescription = props => {
   const {
     model,
     start_date,
@@ -32,12 +32,7 @@ const OfferDescription = props => {
   return (
     <Fragment>
       <Card className={classes.Card}>
-        <CardImg
-          top
-          width="100%"
-          src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180"
-          alt="Card image cap"
-        />
+        <CardImg top width="100%" src={photo} alt="Card image cap" />
         <CardBody>
           <CardTitle>{model}</CardTitle>
           <CardSubtitle>
@@ -75,4 +70,4 @@ const OfferDescription = props => {
   );
 };
 
-export default OfferDescription;
+export default OrderDescription;
