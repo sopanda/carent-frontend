@@ -23,3 +23,18 @@
   font-style: italic;
   color: #3de6af;
 }
+
+.Car_Attribute_Wrapper {
+  margin-top: 20px;
+}
+
+.Car_Attribute {
+  border: 1px solid #3de6af;
+  padding: 4px;
+}
+
+.Car_Image {
+  max-width: 264px;
+  padding-top: 15px;
+  border-radius: 3%;
+}

@@ -70,6 +70,9 @@ export function deleteCarById(id) {
 export function createNewCar(car) {
   return dispatch => {
     dispatch(createCar(car));
+    setTimeout(() => {
+      dispatch(fetchMyCars());
+    }, 1000);
   };
 
   function createCar(car) {

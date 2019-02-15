@@ -64,6 +64,7 @@ class NewCar extends Component {
     e.preventDefault();
     this.setState({ submitted: true });
     const { car } = this.state;
+    JSON.stringify(car);
     this.props.onCreateNewCar(car);
     this.props.history.push("/dashboard");
   };
@@ -111,7 +112,7 @@ class NewCar extends Component {
     this.setState(prevState => ({
       car: {
         ...prevState.car,
-        doors: innerText
+        doors: parseInt(innerText)
       }
     }));
   };
@@ -202,7 +203,7 @@ class NewCar extends Component {
                     </FormGroup>
                     <FormGroup>
                       <Input
-                        type="text"
+                        type="number"
                         name="daily_price"
                         placeholder="Daily price"
                         value={daily_price}
@@ -217,7 +218,7 @@ class NewCar extends Component {
                     </FormGroup>
                     <FormGroup>
                       <Input
-                        type="text"
+                        type="number"
                         name="year"
                         placeholder="Production year"
                         value={year}
@@ -230,7 +231,7 @@ class NewCar extends Component {
                     </FormGroup>
                     <FormGroup>
                       <Input
-                        type="text"
+                        type="number"
                         name="mileage"
                         placeholder="Mileage"
                         value={mileage}

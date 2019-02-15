@@ -11,19 +11,6 @@ import {
 } from "reactstrap";
 import classes from "./OfferDescription.module.css";
 
-const car = {
-  model: "Focus",
-  doors: "4",
-  air: "yes",
-  color: "white",
-  year: "2007",
-  country: "Germany",
-  transmission: "manual",
-  fuel: "diesel",
-  kid_chair: "yes",
-  mileage: "160000"
-};
-
 const OfferDescription = props => {
   const {
     model,
@@ -31,6 +18,7 @@ const OfferDescription = props => {
     end_date,
     photo,
     color,
+    air_conditioner,
     child_seat,
     fuel_type,
     doors,
@@ -64,7 +52,7 @@ const OfferDescription = props => {
                 <div className={classes.Car_Attribute}>Doors : {doors}</div>
                 <div className={classes.Car_Attribute}>Color : {color}</div>
                 <div className={classes.Car_Attribute}>
-                  Air conditioner : {car.air}
+                  Air conditioner : {air_conditioner ? "yes" : "no"}
                 </div>
                 <div className={classes.Car_Attribute}>
                   Kid chair : {child_seat ? "yes" : "no"}

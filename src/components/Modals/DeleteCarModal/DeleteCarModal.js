@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Modal, ModalBody, ModalFooter } from "reactstrap";
+import { Modal, ModalBody, ModalFooter, Row, Col } from "reactstrap";
 import ReactDOM from "react-dom";
 import classes from "./DeleteCarModal.module.css";
 import MyButton from "../../MyButton/MyButton";
@@ -56,6 +56,20 @@ class DeleteCarModal extends Component {
 
   render() {
     const { car } = this.state;
+    const {
+      model,
+      color,
+      child_seat,
+      fuel_type,
+      doors,
+      year,
+      status,
+      mileage,
+      photo,
+      transmission,
+      air_conditioner
+    } = car || "";
+
     return car
       ? ReactDOM.createPortal(
           <Modal
@@ -66,12 +80,39 @@ class DeleteCarModal extends Component {
           >
             <ModalBody className={classes.ModalBody}>
               Do you want to delete
-              <span className={classes.CarModel}>{" " + car.model}</span> from
-              your list?
+              <span className={classes.CarModel}>{" " + model}</span> from your
+              list? <br />
+              <img src={photo} alt="Car" className={classes.Car_Image} />
+              <div className={classes.Car_Attribute_Wrapper}>
+                <Row>
+                  <Col xs="12" md="6">
+                    <div className={classes.Car_Attribute}>Doors : {doors}</div>
+                    <div className={classes.Car_Attribute}>Color : {color}</div>
+                    <div className={classes.Car_Attribute}>
+                      Air conditioner : {air_conditioner ? "yes" : "no"}
+                    </div>
+                    <div className={classes.Car_Attribute}>
+                      Kid chair : {child_seat ? "yes" : "no"}
+                    </div>
+                  </Col>
+                  <Col xs="12" md="6">
+                    <div className={classes.Car_Attribute}>
+                      Transmission : {transmission}
+                    </div>
+                    <div className={classes.Car_Attribute}>
+                      Fuel : {fuel_type}
+                    </div>
+                    <div className={classes.Car_Attribute}>
+                      Mileage : {mileage}
+                    </div>
+                    <div className={classes.Car_Attribute}>Year : {year}</div>
+                  </Col>
+                </Row>
+              </div>
             </ModalBody>
             <ModalFooter className={classes.ModalFooter}>
               <MyButton
-                onClick={() => this.handleDeleteCar(car.id, car.status)}
+                onClick={() => this.handleDeleteCar(car.id, status)}
                 title={"Delete car"}
               />
               <MyButton onClick={this.toggle} title={"Cancel"} />
