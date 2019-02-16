@@ -78,7 +78,9 @@ class RequestsPanel extends Component {
           </Col>
         ))}
       </Fragment>
-    ) : null;
+    ) : (
+      <Spinner />
+    );
   }
 }
 

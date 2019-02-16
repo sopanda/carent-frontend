@@ -65,6 +65,22 @@ export function user(state = initialState, action) {
         ...state,
         fetchingProfile: false
       };
+    case "SET_USER_PHOTO_PENDING":
+      return {
+        ...state,
+        settingPhoto: true
+      };
+    case "SET_USER_PHOTO_FULFILLED":
+      return {
+        ...state,
+        settingPhoto: false,
+        settingPhotoMsg: action.payload
+      };
+    case "SET_USER_PHOTO_REJECTED":
+      return {
+        ...state,
+        settingPhoto: false
+      };
     default:
       return state;
   }

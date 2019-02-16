@@ -10,21 +10,19 @@ export default class Comments extends Component {
     const { reviews } = this.props;
     console.log(reviews);
     let comments =
-      reviews.length !== 0 ? (
-        reviews.map(comment => {
-          return (
-            <Comment
-              author={comment.author}
-              key={comment.id}
-              rating={comment.rating}
-            >
-              {comment.text}
-            </Comment>
-          );
-        })
-      ) : (
-        <p>Your profile don't have any feedbacks from owners</p>
-      );
+      reviews.length !== 0
+        ? reviews.map(comment => {
+            return (
+              <Comment
+                author={comment.author}
+                key={comment.id}
+                rating={comment.rating}
+              >
+                {comment.text}
+              </Comment>
+            );
+          })
+        : null;
     return (
       <Row>
         <Col>{comments}</Col>

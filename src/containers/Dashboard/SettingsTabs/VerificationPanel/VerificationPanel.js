@@ -4,6 +4,8 @@ import styled from "styled-components";
 import { CustomInput, Row, Col, InputGroup } from "reactstrap";
 import MyButton from "../../../../components/MyButton/MyButton";
 import { SettingsTitle } from "../../../../components/SettingsTitle/SettingsTitle";
+import { connect } from "react-redux";
+import { setUserPhoto } from "../../../../actions/user.actions";
 
 const Wrapper = styled.div`
   padding: 20px;
@@ -14,7 +16,7 @@ const UploadingWrapper = styled.div`
 `;
 
 const UploadInput = styled(CustomInput)`
-  max-width: 200px;
+  max-width: 250px;
   .custom-file-label::after {
     display: none;
   }
@@ -31,7 +33,9 @@ class VerificationPanel extends Component {
     super(props);
     this.state = {
       selectedFileName: "Choose file",
-      file: null
+      selectedPhotoName: "Choose your photo",
+      file: null,
+      photo: null
     };
   }
 
@@ -42,12 +46,29 @@ class VerificationPanel extends Component {
     });
   };
 
+  photoSelectedHandler = e => {
+    this.setState({
+      selectedPhotoName: e.target.files[0].name,
+      photo: e.target.files[0]
+    });
+  };
+
   fileUploadHandler = () => {
     console.log(this.state.file);
   };
 
+  photoUploadHandler = () => {
+    const { photo } = this.state;
+    const { id } = this.props.user;
+    if (photo) {
+      let userPhoto = { photo: photo };
+      this.props.onUploadPhoto(id, userPhoto);
+      this.setState({ photo: null, selectedPhotoName: "Your photo uploaded" });
+    }
+  };
+
   render() {
-    const { selectedFileName } = this.state;
+    const { selectedFileName, selectedPhotoName } = this.state;
     const { user } = this.props;
     return (
       <Wrapper>
@@ -69,6 +90,22 @@ class VerificationPanel extends Component {
                 />
               </InputGroup>
             </UploadingWrapper>
+            <UploadingWrapper>
+              <SettingsTitle>Please upload your profile photo</SettingsTitle>
+              <InputGroup>
+                <UploadInput
+                  type="file"
+                  id="photo"
+                  name="photo"
+                  onChange={this.photoSelectedHandler}
+                  label={selectedPhotoName}
+                />
+                <UploadButton
+                  title="Upload photo"
+                  onClick={this.photoUploadHandler}
+                />
+              </InputGroup>
+            </UploadingWrapper>
           </Col>
           <Col md="4" sm="12">
             <UserWidget owner={user} />
@@ -79,4 +116,13 @@ class VerificationPanel extends Component {
   }
 }
 
-export default VerificationPanel;
+const mapDispatchToProps = dispatch => {
+  return {
+    onUploadPhoto: (userId, photo) => dispatch(setUserPhoto(userId, photo))
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(VerificationPanel);

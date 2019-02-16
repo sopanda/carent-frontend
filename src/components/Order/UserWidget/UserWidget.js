@@ -2,23 +2,11 @@ import React, { Fragment, Component } from "react";
 import { Card, CardBody, CardTitle, CardSubtitle } from "reactstrap";
 import classes from "./UserWidget.module.css";
 import MyButton from "../../MyButton/MyButton";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Spinner from "../../Spinner/Spinner";
-import styled from "styled-components";
 import { sendRequest } from "../../../actions/request.actions";
 import { toast, ToastContainer } from "react-toastify";
-
-const NavLink = styled(Link)`
-  padding: 0 !important;
-  color: #3de6af;
-  &:hover {
-    color: #32bb8d;
-    -webkit-transition: 0.3s;
-    transition: 0.3s;
-    text-decoration: none;
-  }
-`;
+import { NavLink } from "../../NavLink/NavLink";
 
 class UserWidget extends Component {
   constructor(props) {

@@ -82,7 +82,15 @@ class DeleteCarModal extends Component {
               Do you want to delete
               <span className={classes.CarModel}>{" " + model}</span> from your
               list? <br />
-              <img src={photo} alt="Car" className={classes.Car_Image} />
+              <img
+                src={
+                  photo
+                    ? photo
+                    : "http://www.herronauto.ie/wp-content/themes/SKU-WP-1/assets/images/no_photo.png"
+                }
+                alt="Car"
+                className={classes.Car_Image}
+              />
               <div className={classes.Car_Attribute_Wrapper}>
                 <Row>
                   <Col xs="12" md="6">

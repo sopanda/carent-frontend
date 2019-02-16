@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 import classes from "./CarMapCard.module.css";
 import styled from "styled-components";
 import MyButton from "../../MyButton/MyButton";
+import { NavLink } from "../../NavLink/NavLink";
 import { connect } from "react-redux";
 
 const MyCard = styled(Card)`
@@ -67,7 +68,7 @@ class CarMapCard extends Component {
       end_date,
       id
     } = this.props.car;
-    const { first_name, last_name } = this.props.car.owner;
+    const { first_name, last_name, id: owner_id } = this.props.car.owner;
     const { road, house_number } = this.props.car.address;
     return (
       <Fragment>
@@ -94,7 +95,10 @@ class CarMapCard extends Component {
                   {`: ${start_date} - ${end_date}`}
                 </ListItem>
                 <ListItem>
-                  <strong>Owner</strong>: {first_name + " " + last_name}
+                  <strong>Owner</strong>:{" "}
+                  <NavLink
+                    to={`/users/${owner_id}`}
+                  >{`${first_name} ${last_name}`}</NavLink>
                 </ListItem>
                 <ListItem>
                   <strong>Price</strong>: {daily_price}$ per day

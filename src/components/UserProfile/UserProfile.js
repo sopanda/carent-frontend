@@ -8,6 +8,13 @@ import { Container, Row, Col } from "reactstrap";
 import styled from "styled-components";
 import { withRouter } from "react-router-dom";
 
+const Empty = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+`;
+
 const UserWidgetProfile = styled(UserWidget)`
   margin: 20px 0;
 `;
@@ -33,7 +40,11 @@ class UserProfile extends Component {
         <Container>
           <Row>
             <Col md="8">
-              <Comments reviews={reviews} />
+              {reviews.length !== 0 ? (
+                <Comments reviews={reviews} />
+              ) : (
+                <Empty>You don't have any feedbacks</Empty>
+              )}
             </Col>
             <Col md="4">
               <UserWidgetProfile owner={user} />

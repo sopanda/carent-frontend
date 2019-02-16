@@ -56,7 +56,9 @@ class SettingsTabs extends Component {
                     </Row>
                   </Fragment>
                 ) : (
-                  <SettingsTitle>You don't have any requests</SettingsTitle>
+                  <SettingsTitle style={{ textAlign: "center" }}>
+                    You don't have any requests
+                  </SettingsTitle>
                 )}
               </TabPanel>
               <TabPanel>

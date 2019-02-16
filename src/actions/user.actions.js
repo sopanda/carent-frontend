@@ -134,3 +134,27 @@ export function setMyLocation({ latitude, longitude }) {
     payload: { latitude: latitude, longitude: longitude }
   };
 }
+
+export function setUserPhoto(userId, photo) {
+  return dispatch => {
+    dispatch(setPhoto(userId, photo));
+    setTimeout(() => {
+      dispatch(fetchProfile());
+    }, 2000);
+  };
+
+  function setPhoto(userId, photo) {
+    return {
+      type: "SET_USER_PHOTO",
+      payload: axios
+        .put(`/users/${userId}`, photo)
+        .then(res => {
+          console.log("User photo uploaded");
+          return res.data;
+        })
+        .catch(function(error) {
+          console.log(error);
+        })
+    };
+  }
+}

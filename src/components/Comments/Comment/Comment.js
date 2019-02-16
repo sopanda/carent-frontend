@@ -10,23 +10,12 @@ import {
   Container
 } from "reactstrap";
 import classes from "./Comment.module.css";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
 import StarRatingComponent from "react-star-rating-component";
+import { NavLink } from "../../NavLink/NavLink";
+import styled from "styled-components";
 
 const CommentStar = styled(StarRatingComponent)`
   display: inline !important;
-`;
-
-const NavLink = styled(Link)`
-  padding: 0 !important;
-  color: #3de6af;
-  &:hover {
-    color: #32bb8d;
-    -webkit-transition: 0.3s;
-    transition: 0.3s;
-    text-decoration: none;
-  }
 `;
 
 const Comment = props => {

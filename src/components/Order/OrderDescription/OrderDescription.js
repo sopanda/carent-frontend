@@ -72,7 +72,9 @@ const OrderDescription = props => {
               </Col>
             </Row>
           </div>
-          <CardText className={classes.Summary}>{description}</CardText>
+          <CardText className={classes.Summary}>
+            Offer description: <br /> {description}
+          </CardText>
         </CardBody>
       </Card>
     </Fragment>
