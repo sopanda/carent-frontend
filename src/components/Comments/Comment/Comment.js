@@ -47,7 +47,10 @@ const Comment = props => {
                   editing={false}
                 />
               </CardTitle>
-              <CardSubtitle>Account status: </CardSubtitle>
+              <CardSubtitle>
+                Account status:{" "}
+                {props.author.verified ? "verified" : "unverified"}
+              </CardSubtitle>
               <CardText>{props.children}</CardText>
             </CardBody>
           </Col>

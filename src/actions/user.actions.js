@@ -159,3 +159,17 @@ export function setUserPhoto(userId, photo) {
     };
   }
 }
+
+export function uploadDocuments(doc) {
+  return {
+    type: "UPLOAD_DOCUMENTS",
+    payload: axios
+      .post(`/add_verify_document`, doc)
+      .then(res => {
+        return res.data;
+      })
+      .catch(function(error) {
+        console.log(error);
+      })
+  };
+}

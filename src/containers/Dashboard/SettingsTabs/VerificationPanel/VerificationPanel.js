@@ -5,7 +5,10 @@ import { CustomInput, Row, Col, InputGroup } from "reactstrap";
 import MyButton from "../../../../components/MyButton/MyButton";
 import { SettingsTitle } from "../../../../components/SettingsTitle/SettingsTitle";
 import { connect } from "react-redux";
-import { setUserPhoto } from "../../../../actions/user.actions";
+import {
+  setUserPhoto,
+  uploadDocuments
+} from "../../../../actions/user.actions";
 
 const Wrapper = styled.div`
   padding: 20px;
@@ -54,7 +57,13 @@ class VerificationPanel extends Component {
   };
 
   fileUploadHandler = () => {
-    console.log(this.state.file);
+    const { file, selectedFileName } = this.state;
+    if (file) {
+      let fd = new FormData();
+      fd.append("document", file, selectedFileName);
+      this.props.onUploadFile(fd);
+      this.setState({ file: null, selectedFileName: "Your data uploaded" });
+    }
   };
 
   photoUploadHandler = () => {
@@ -119,7 +128,8 @@ class VerificationPanel extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onUploadPhoto: (userId, photo) => dispatch(setUserPhoto(userId, photo))
+    onUploadPhoto: (userId, photo) => dispatch(setUserPhoto(userId, photo)),
+    onUploadFile: file => dispatch(uploadDocuments(file))
   };
 };
 

@@ -81,6 +81,22 @@ export function user(state = initialState, action) {
         ...state,
         settingPhoto: false
       };
+    case "UPLOAD_DOCUMENTS_PENDING":
+      return {
+        ...state,
+        uploadingDocument: true
+      };
+    case "UPLOAD_DOCUMENTS_FULFILLED":
+      return {
+        ...state,
+        uploadingDocument: false,
+        uploadingDocumentMsg: action.payload
+      };
+    case "UPLOAD_DOCUMENTS_REJECTED":
+      return {
+        ...state,
+        uploadingDocument: false
+      };
     default:
       return state;
   }
