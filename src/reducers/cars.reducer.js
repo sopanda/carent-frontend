@@ -63,12 +63,29 @@ export function cars(state = initialState, action) {
     case "CREATE_NEW_CAR_FULFILLED":
       return {
         ...state,
-        creatingCar: false
+        creatingCar: false,
+        newCar: action.payload
       };
     case "CREATE_NEW_CAR_REJECTED":
       return {
         ...state,
         creatingCar: false
+      };
+    case "SET_CAR_PHOTO_PENDING":
+      return {
+        ...state,
+        settingPhoto: true
+      };
+    case "SET_CAR_PHOTO_FULFILLED":
+      return {
+        ...state,
+        settingPhoto: false,
+        settingPhotoMsg: action.payload
+      };
+    case "SET_CAR_PHOTO_REJECTED":
+      return {
+        ...state,
+        settingPhoto: false
       };
     default:
       return state;

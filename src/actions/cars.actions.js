@@ -68,20 +68,34 @@ export function deleteCarById(id) {
 }
 
 export function createNewCar(car) {
+  return {
+    type: "CREATE_NEW_CAR",
+    payload: axios
+      .post(`/cars/`, car)
+      .then(res => {
+        return res.data;
+      })
+      .catch(function(error) {
+        console.log(error);
+      })
+  };
+}
+
+export function setCarPhoto(carId, photo) {
   return dispatch => {
-    dispatch(createCar(car));
+    dispatch(setPhoto(carId, photo));
     setTimeout(() => {
       dispatch(fetchMyCars());
-    }, 1000);
+    }, 2000);
   };
 
-  function createCar(car) {
+  function setPhoto(carId, photo) {
     return {
-      type: "CREATE_NEW_CAR",
+      type: "SET_CAR_PHOTO",
       payload: axios
-        .post(`/cars/`, car)
+        .put(`/cars/${carId}/update_photo`, photo)
         .then(res => {
-          console.log(res.data);
+          return res.data;
         })
         .catch(function(error) {
           console.log(error);

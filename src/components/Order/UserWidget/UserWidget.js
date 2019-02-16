@@ -57,7 +57,7 @@ class UserWidget extends Component {
             </CardTitle>
             <CardSubtitle>
               {`Email: ${this.props.owner.email}`} <br />{" "}
-              {`Account status: Verified`}
+              {`Account status: ${this.props.owner.status}`}
             </CardSubtitle>
             {this.props.btnTitle && (
               <div className={classes.SendBtn}>
