@@ -1,4 +1,4 @@
-const initialState = { sending: false };
+const initialState = { sending: false, myRequests: [] };
 export function request(state = initialState, action) {
   switch (action.type) {
     case "SEND_REQUEST_PENDING":

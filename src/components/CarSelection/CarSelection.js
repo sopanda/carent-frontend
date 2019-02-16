@@ -24,11 +24,16 @@ class CarSelection extends Component {
   render() {
     const { selectedOption } = this.state;
     const { options } = this.props;
-    let cars = options
-      ? options.map(car => {
-          return { value: car.id, label: car.model };
-        })
-      : null;
+    let cars = [];
+    if (options) {
+      options.map(car => {
+        if (car.status === "pending") {
+          cars.push({ value: car.id, label: car.model });
+        }
+        return null;
+      });
+    }
+
     return (
       <CarSelector
         value={selectedOption}

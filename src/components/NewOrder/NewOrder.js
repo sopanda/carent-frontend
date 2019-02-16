@@ -83,6 +83,7 @@ class NewOrder extends Component {
       };
       console.log(order);
       this.props.OnCreateOffer(carId, order);
+      this.props.history.push("/dashboard");
     } else {
       this.notify();
     }
@@ -160,7 +161,6 @@ class NewOrder extends Component {
                       title="Create order"
                       className={classes.Create_Button}
                     />
-                    w
                   </Col>
                 </Row>
               </Container>

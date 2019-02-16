@@ -70,8 +70,8 @@ const OrderPanel = props => {
     <Fragment>
       <RowTabs>
         <TabList>
-          <Tab>In progress</Tab>
-          <Tab>Complete</Tab>
+          <Tab>Orders done by you</Tab>
+          <Tab>Orders for your cars</Tab>
         </TabList>
         <TabPanel>
           <MyTable data={orders_in} />

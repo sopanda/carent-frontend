@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { Container, Row, Col } from "reactstrap";
 import {
   Tab,
@@ -45,10 +45,16 @@ class SettingsTabs extends Component {
             </Col>
             <Col md="10">
               <TabPanel>
-                <SettingsTitle>Your offer requests:</SettingsTitle>
-                <Row>
-                  <RequestsPanel orders={requests} />
-                </Row>
+                {requests.length !== 0 ? (
+                  <Fragment>
+                    <SettingsTitle>Your offer requests:</SettingsTitle>
+                    <Row>
+                      <RequestsPanel orders={requests} />
+                    </Row>
+                  </Fragment>
+                ) : (
+                  <SettingsTitle>You don't have any requests</SettingsTitle>
+                )}
               </TabPanel>
               <TabPanel>
                 <OrderPanel cars={myCars} />
