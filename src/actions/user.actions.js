@@ -144,12 +144,13 @@ export function setUserPhoto(userId, photo) {
   };
 
   function setPhoto(userId, photo) {
+    console.log(userId);
+    console.log(photo);
     return {
       type: "SET_USER_PHOTO",
       payload: axios
         .put(`/users/${userId}`, photo)
         .then(res => {
-          console.log("User photo uploaded");
           return res.data;
         })
         .catch(function(error) {

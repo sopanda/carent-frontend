@@ -42,13 +42,12 @@ class UserWidget extends Component {
       <Fragment>
         <Card className={classes.UserWidget_Card + " " + this.props.className}>
           <CardBody>
-            <img
-              src={
-                this.props.owner.photo
-                  ? this.props.owner.photo
-                  : "https://liains.com/wp-content/uploads/sites/13/2015/07/no-image-300x300.png"
-              }
-              alt="Profile"
+            <div
+              style={{
+                backgroundImage: this.props.owner.photo
+                  ? `url(${this.props.owner.photo})`
+                  : `url("https://liains.com/wp-content/uploads/sites/13/2015/07/no-image-300x300.png")`
+              }}
               className={classes.Profile_Image}
             />
             <CardTitle>

@@ -24,13 +24,12 @@ const Comment = props => {
       <Container>
         <Row>
           <Col md="3" className={classes.UserImageWrapper}>
-            <img
-              src={
-                props.author.photo
-                  ? this.props.owner.photo
-                  : "https://liains.com/wp-content/uploads/sites/13/2015/07/no-image-300x300.png"
-              }
-              alt="User"
+            <div
+              style={{
+                backgroundImage: props.author.photo
+                  ? `url(${props.author.photo})`
+                  : `url("https://liains.com/wp-content/uploads/sites/13/2015/07/no-image-300x300.png")`
+              }}
             />
           </Col>
           <Col md="9">

@@ -28,7 +28,8 @@ class SettingsTabs extends Component {
   shouldComponentUpdate = nextProps => {
     return (
       nextProps.myCars !== this.props.myCars ||
-      nextProps.requests !== this.props.requests
+      nextProps.requests !== this.props.requests ||
+      nextProps.profile !== this.props.profile
     );
   };
 

@@ -4,11 +4,16 @@
   display: flex;
 }
 
-.UserImageWrapper img {
-  width: 100%;
+.UserImageWrapper div {
+  margin: auto;
+  margin-bottom: 14px;
   border-radius: 50%;
-  height: auto;
-  max-width: 250px;
+  height: 150px;
+  width: 100%;
+  max-width: 150px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .CommentBody {

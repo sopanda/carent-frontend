@@ -58,11 +58,12 @@ class VerificationPanel extends Component {
   };
 
   photoUploadHandler = () => {
-    const { photo } = this.state;
+    const { photo, selectedPhotoName } = this.state;
     const { id } = this.props.user;
     if (photo) {
-      let userPhoto = { photo: photo };
-      this.props.onUploadPhoto(id, userPhoto);
+      let fd = new FormData();
+      fd.append("photo", photo, selectedPhotoName);
+      this.props.onUploadPhoto(id, fd);
       this.setState({ photo: null, selectedPhotoName: "Your photo uploaded" });
     }
   };
