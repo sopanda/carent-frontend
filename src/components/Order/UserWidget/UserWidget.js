@@ -28,6 +28,10 @@ class UserWidget extends Component {
     };
   }
 
+  shouldComponentUpdate = nextProps => {
+    return nextProps.owner !== this.props.owner;
+  };
+
   sendRequest = id => {
     this.props.onSendRequest(id);
     this.setState({ sent: true });

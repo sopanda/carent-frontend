@@ -6,6 +6,7 @@ import fetchUser from "../../actions/user.actions";
 import Spinner from "../Spinner/Spinner";
 import { Container, Row, Col } from "reactstrap";
 import styled from "styled-components";
+import { withRouter } from "react-router-dom";
 
 const UserWidgetProfile = styled(UserWidget)`
   margin: 20px 0;
@@ -17,12 +18,13 @@ class UserProfile extends Component {
     this.props.onFetchInfo(id);
   }
 
-  shouldComponentUpdate = nextProps => {
-    return (
-      nextProps.user !== this.props.user ||
-      nextProps.reviews !== this.props.reviews
-    );
-  };
+  /*magic*/
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.match.params.id !== this.props.match.params.id) {
+      const id = nextProps.match.params.id;
+      this.props.onFetchInfo(id);
+    }
+  }
 
   render() {
     const { user, reviews, isFetchedUser, isFetchedReviews } = this.props;
@@ -60,7 +62,9 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(UserProfile);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(UserProfile)
+);
