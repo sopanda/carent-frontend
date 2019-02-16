@@ -50,7 +50,15 @@ class UserWidget extends Component {
       <Fragment>
         <Card className={classes.UserWidget_Card + " " + this.props.className}>
           <CardBody>
-            <div className={classes.Image} />
+            <img
+              src={
+                this.props.owner.photo
+                  ? this.props.owner.photo
+                  : "https://liains.com/wp-content/uploads/sites/13/2015/07/no-image-300x300.png"
+              }
+              alt="Profile"
+              className={classes.Profile_Image}
+            />
             <CardTitle>
               <NavLink to={`/users/${this.props.owner.id}`}>{`${
                 this.props.owner.first_name

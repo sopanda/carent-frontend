@@ -26,7 +26,10 @@ class SettingsTabs extends Component {
   };
 
   shouldComponentUpdate = nextProps => {
-    return nextProps.myCars !== this.props.myCars;
+    return (
+      nextProps.myCars !== this.props.myCars ||
+      nextProps.requests !== this.props.requests
+    );
   };
 
   render() {
@@ -40,7 +43,7 @@ class SettingsTabs extends Component {
                 <Tab>Requests</Tab>
                 <Tab>My orders</Tab>
                 <Tab>My cars</Tab>
-                <Tab>Verify account</Tab>
+                <Tab>Your Account</Tab>
               </TabList>
             </Col>
             <Col md="10">

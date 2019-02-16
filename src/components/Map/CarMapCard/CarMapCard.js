@@ -73,7 +73,14 @@ class CarMapCard extends Component {
       <Fragment>
         <MyCard className={classes.Card}>
           <Hero>
-            <Img alt="Car" src={photo} />
+            <Img
+              alt="Car"
+              src={
+                photo
+                  ? photo
+                  : "http://www.herronauto.ie/wp-content/themes/SKU-WP-1/assets/images/no_photo.png"
+              }
+            />
             <MyLink to={`/order/${id}`}>
               <MyButton title="Show offer" />
             </MyLink>

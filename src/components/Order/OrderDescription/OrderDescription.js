@@ -32,7 +32,16 @@ const OrderDescription = props => {
   return (
     <Fragment>
       <Card className={classes.Card}>
-        <CardImg top width="100%" src={photo} alt="Card image cap" />
+        <CardImg
+          top
+          width="100%"
+          src={
+            photo
+              ? photo
+              : "http://www.herronauto.ie/wp-content/themes/SKU-WP-1/assets/images/no_photo.png"
+          }
+          alt="Card image cap"
+        />
         <CardBody>
           <CardTitle>{model}</CardTitle>
           <CardSubtitle>

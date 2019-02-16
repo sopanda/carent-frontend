@@ -43,8 +43,11 @@ const ButtonGroup = styled.div`
 `;
 
 class RequestsPanel extends Component {
+  shouldComponentUpdate = nextProps => {
+    return nextProps.orders !== this.props.orders;
+  };
   render() {
-    return this.props.orders ? (
+    return this.props.orders.length !== 0 ? (
       <Fragment>
         {this.props.orders.map((order, i) => (
           <Col md="6" key={i}>
