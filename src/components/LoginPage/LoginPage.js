@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { login } from "../../actions/user.actions";
+import { login, logout } from "../../actions/user.actions";
 import { Container, Form, FormGroup, Input } from "reactstrap";
 import classes from "./LoginPage.module.css";
 import MyButton from "../MyButton/MyButton";
+import axios from "../../axios-url";
 
 class LoginPage extends React.Component {
   constructor(props) {

@@ -1,13 +1,18 @@
 import axios from "axios";
 
-let token = localStorage.getItem("user");
-const instanceOrders = axios.create({
-  baseURL: "https://carrent-api.herokuapp.com/"
-});
-
-axios.defaults.headers = {
-  "Content-Type": "application/json",
-  Authorization: "Bearer " + token
+const defaultOptions = {
+  baseURL: "https://carrent-api.herokuapp.com/",
+  headers: {
+    "Content-Type": "application/json"
+  }
 };
 
-export default instanceOrders;
+let instance = axios.create(defaultOptions);
+
+instance.interceptors.request.use(function(config) {
+  const token = localStorage.getItem("user");
+  config.headers.Authorization = token ? `Bearer ${token}` : "";
+  return config;
+});
+
+export default instance;

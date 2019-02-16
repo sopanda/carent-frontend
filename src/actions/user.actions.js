@@ -9,7 +9,6 @@ export function login(user) {
       .then(res => {
         let token = res.data.jwt;
         localStorage.setItem("user", token);
-        history.push("/");
         dispatch(loginSuccess(token));
       })
       .catch(function(error) {
@@ -32,6 +31,7 @@ export function login(user) {
   }
 
   function loginSuccess(token) {
+    history.push("/");
     return {
       type: "LOGIN_SUCCESS",
       payload: token

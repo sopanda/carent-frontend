@@ -21,11 +21,6 @@ export function authentication(state = initialState, action) {
         error: action.payload,
         loggingIn: false
       };
-    case "LOGOUT":
-      return {
-        loggedIn: false,
-        user: ""
-      };
     default:
       return state;
   }

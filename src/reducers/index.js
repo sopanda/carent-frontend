@@ -6,7 +6,7 @@ import { cars } from "./cars.reducer";
 import { offer } from "./offer.reducer";
 import { request } from "./request.reducer";
 
-const rootReducer = combineReducers({
+const appReducer = combineReducers({
   authentication,
   registration,
   user,
@@ -14,5 +14,13 @@ const rootReducer = combineReducers({
   offer,
   request
 });
+
+const rootReducer = (state, action) => {
+  if (action.type === "LOGOUT") {
+    // state.authentication.user = undefined;
+    state = undefined;
+  }
+  return appReducer(state, action);
+};
 
 export default rootReducer;

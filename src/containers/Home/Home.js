@@ -27,8 +27,10 @@ class Home extends Component {
 
   componentDidUpdate(prevState) {
     if (prevState.location !== this.state.location) {
-      this.props.onFetchCars(this.state.location);
       this.props.onSetMyLocation(this.state.location);
+      setTimeout(() => {
+        this.props.onFetchCars(this.state.location);
+      }, 500);
     }
   }
 
