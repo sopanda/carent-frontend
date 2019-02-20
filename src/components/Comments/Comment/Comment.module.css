@@ -5,12 +5,10 @@
 }
 
 .UserImageWrapper div {
-  margin: auto;
-  margin-bottom: 14px;
   border-radius: 50%;
+  margin: 10px 0;
   height: 150px;
-  width: 100%;
-  max-width: 150px;
+  width: 150px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { PureComponent, Fragment } from "react";
 import classes from "./Toolbar.module.css";
 import { connect } from "react-redux";
 import { logout } from "../../../actions/user.actions";
@@ -15,7 +15,7 @@ import {
 import { NavLink as navLink } from "react-router-dom";
 import { withRouter } from "react-router";
 
-class Toolbar extends Component {
+class Toolbar extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -27,7 +27,6 @@ class Toolbar extends Component {
       isOpen: !this.state.isOpen
     });
   };
-
   render() {
     const { onLogOut } = this.props;
 
@@ -36,11 +35,6 @@ class Toolbar extends Component {
         <NavbarToggler className={classes.IconToggle} onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className={classes.List + " ml-auto"} navbar>
-            <NavItem>
-              <NavLink tag={navLink} to="/about" exact className={classes.Link}>
-                About
-              </NavLink>
-            </NavItem>
             <NavItem>
               <NavLink
                 tag={navLink}
@@ -82,7 +76,6 @@ class Toolbar extends Component {
             >
               Dashboard
             </NavLink>
-
             {navbarToggler}
           </Navbar>
         </Container>
@@ -97,7 +90,13 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
+const mapStateToProps = state => {
+  return {
+    currentUser: state.user.profile
+  };
+};
+
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(withRouter(Toolbar));

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Marker, InfoWindow } from "react-google-maps";
 import CarMapCard from "../CarMapCard/CarMapCard";
-// import carMarker from "../../../assets/carMarker.png";
 
 export class CarMarker extends Component {
   state = {

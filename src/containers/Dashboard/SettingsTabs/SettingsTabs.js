@@ -17,37 +17,63 @@ import { fetchMyCars } from "../../../actions/cars.actions";
 import { SettingsTitle } from "../../../components/SettingsTitle/SettingsTitle";
 import Spinner from "../../../components/Spinner/Spinner";
 import { fetchMyRequests } from "../../../actions/request.actions";
+import { fetchDataForOrdersPanel } from "../../../actions/orders.actions";
+import styled from "styled-components";
+
+const NoRequestAlert = styled.div`
+  text-align: center;
+  background: #001220;
+`;
 
 class SettingsTabs extends Component {
   componentDidMount = () => {
     this.props.onFetchProfile();
     this.props.onFetchMyCars();
     this.props.onFetchRequests();
+    this.props.onFetchDataForOrdersPanel();
   };
 
   shouldComponentUpdate = nextProps => {
     return (
       nextProps.myCars !== this.props.myCars ||
       nextProps.requests !== this.props.requests ||
-      nextProps.profile !== this.props.profile
+      nextProps.profile !== this.props.profile ||
+      nextProps.myLoans !== this.props.myLoans ||
+      nextProps.myOrders !== this.props.myOrders
     );
   };
 
   render() {
-    const { profile, myCars, isCarsFetched, requests } = this.props;
+    const {
+      profile,
+      myCars,
+      isCarsFetched,
+      requests,
+      myLoans,
+      myOrders,
+      isLoansFetched,
+      isOrdersFetched
+    } = this.props;
     return (
       <Tabs>
         <Container>
           <Row>
             <Col md="2">
               <TabList>
-                <Tab>Requests</Tab>
                 <Tab>My orders</Tab>
+                <Tab>Requests</Tab>
                 <Tab>My cars</Tab>
                 <Tab>Your Account</Tab>
               </TabList>
             </Col>
             <Col md="10">
+              <TabPanel>
+                {isLoansFetched && isOrdersFetched ? (
+                  <OrderPanel orders={myOrders} loans={myLoans} />
+                ) : (
+                  <Spinner />
+                )}
+              </TabPanel>
               <TabPanel>
                 {requests.length !== 0 ? (
                   <Fragment>
@@ -57,13 +83,8 @@ class SettingsTabs extends Component {
                     </Row>
                   </Fragment>
                 ) : (
-                  <SettingsTitle style={{ textAlign: "center" }}>
-                    You don't have any requests
-                  </SettingsTitle>
+                  <NoRequestAlert>You don't have any requests</NoRequestAlert>
                 )}
-              </TabPanel>
-              <TabPanel>
-                <OrderPanel cars={myCars} />
               </TabPanel>
               <TabPanel>
                 {!isCarsFetched ? <CarsPanel cars={myCars} /> : <Spinner />}
@@ -83,8 +104,12 @@ const mapStateToProps = state => {
   return {
     profile: state.user.profile,
     myCars: state.cars.myCars,
-    isCarsFetched: state.cars.fetchingCars,
-    requests: state.request.myRequests
+    isCarsFetched: state.cars.fetchedCars,
+    requests: state.request.myRequests,
+    myLoans: state.orders.loans,
+    myOrders: state.orders.orders,
+    isLoansFetched: state.orders.fetchedLoans,
+    isOrdersFetched: state.orders.fetchedOrders
   };
 };
 
@@ -92,7 +117,8 @@ const mapDispatchToProps = dispatch => {
   return {
     onFetchProfile: () => dispatch(fetchProfile()),
     onFetchMyCars: () => dispatch(fetchMyCars()),
-    onFetchRequests: () => dispatch(fetchMyRequests())
+    onFetchRequests: () => dispatch(fetchMyRequests()),
+    onFetchDataForOrdersPanel: () => dispatch(fetchDataForOrdersPanel())
   };
 };
 

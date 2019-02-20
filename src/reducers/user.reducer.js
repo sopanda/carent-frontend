@@ -3,6 +3,7 @@ const initialState = {
   fetchingUserReviews: false,
   fetchedUser: false,
   fetchedUserReviews: false,
+  fetchedProfile: false,
   userInfo: {},
   userReviews: [],
   profile: {},
@@ -58,6 +59,7 @@ export function user(state = initialState, action) {
       return {
         ...state,
         fetchingProfile: false,
+        fetchedProfile: true,
         profile: action.payload
       };
     case "FETCH_PROFILE_REJECTED":

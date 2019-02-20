@@ -4,7 +4,6 @@ import styled from "styled-components";
 import MyButton from "../../../../components/MyButton/MyButton";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import Spinner from "../../../../components/Spinner/Spinner";
 import {
   acceptRequest,
   declineRequests
@@ -47,39 +46,40 @@ class RequestsPanel extends Component {
     return nextProps.orders !== this.props.orders;
   };
   render() {
-    return this.props.orders.length !== 0 ? (
+    const { orders } = this.props;
+    return (
       <Fragment>
-        {this.props.orders.map((order, i) => (
-          <Col md="6" key={i}>
-            <RequestWrapper>
-              <ListGroup>
-                <ListItem>Order: {`#${order.id}`}</ListItem>
-                <ListItem>
-                  User:{" "}
-                  <NavLink to={`/users/${order.sender.id}`}>
-                    {order.sender.first_name + " " + order.sender.last_name}
-                  </NavLink>
-                </ListItem>
-                <ListItem>Car: {order.car.model}</ListItem>
-                <ListItem>From: {order.car.start_date}</ListItem>
-                <ListItem>Till: {order.car.end_date}</ListItem>
-              </ListGroup>
-              <ButtonGroup>
-                <DecisionButton
-                  title="Accept request"
-                  onClick={() => this.props.onAccept(order.id)}
-                />
-                <DecisionButton
-                  title="Reject request"
-                  onClick={() => this.props.onDecline(order.id)}
-                />
-              </ButtonGroup>
-            </RequestWrapper>
-          </Col>
-        ))}
+        {orders.length
+          ? orders.map((order, i) => (
+              <Col md="6" key={i}>
+                <RequestWrapper>
+                  <ListGroup>
+                    <ListItem>Order: {`#${order.id}`}</ListItem>
+                    <ListItem>
+                      User:{" "}
+                      <NavLink to={`/users/${order.sender.id}`}>
+                        {order.sender.first_name + " " + order.sender.last_name}
+                      </NavLink>
+                    </ListItem>
+                    <ListItem>Car: {order.car.model}</ListItem>
+                    <ListItem>From: {order.car.start_date}</ListItem>
+                    <ListItem>Till: {order.car.end_date}</ListItem>
+                  </ListGroup>
+                  <ButtonGroup>
+                    <DecisionButton
+                      title="Accept request"
+                      onClick={() => this.props.onAccept(order.id)}
+                    />
+                    <DecisionButton
+                      title="Reject request"
+                      onClick={() => this.props.onDecline(order.id)}
+                    />
+                  </ButtonGroup>
+                </RequestWrapper>
+              </Col>
+            ))
+          : null}
       </Fragment>
-    ) : (
-      <Spinner />
     );
   }
 }

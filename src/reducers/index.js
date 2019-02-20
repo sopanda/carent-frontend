@@ -5,6 +5,7 @@ import { user } from "./user.reducer";
 import { cars } from "./cars.reducer";
 import { offer } from "./offer.reducer";
 import { request } from "./request.reducer";
+import { orders } from "./orders.reducer";
 
 const appReducer = combineReducers({
   authentication,
@@ -12,7 +13,8 @@ const appReducer = combineReducers({
   user,
   cars,
   offer,
-  request
+  request,
+  orders
 });
 
 const rootReducer = (state, action) => {

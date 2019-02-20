@@ -1,12 +1,20 @@
 .LoginPage_Wrapper {
   max-width: 450px;
   width: 100%;
-  position: absolute;
   padding: 0 10px;
-  top: 50%;
-  left: 50%;
   text-align: right;
-  transform: translate(-50%, -50%);
+}
+
+.Overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 300;
+  background: #001220;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .LoginPage_Input,

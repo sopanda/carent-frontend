@@ -8,7 +8,6 @@ import {
   ListGroup,
   ListGroupItem
 } from "reactstrap";
-// import CarImageTmp from "../../../assets/cars/audiA6.jpg";
 import { Link } from "react-router-dom";
 import classes from "./CarMapCard.module.css";
 import styled from "styled-components";

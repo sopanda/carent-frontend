@@ -3,15 +3,23 @@
   top: 243px;
 }
 
+.Overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 300;
+  background: #001220;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .RegisterPage_Wrapper {
   max-width: 450px;
   width: 100%;
-  position: absolute;
-  top: 50%;
   padding: 0 10px;
-  left: 50%;
   text-align: right;
-  transform: translate(-50%, -50%);
 }
 
 .RegisterPage_Input,

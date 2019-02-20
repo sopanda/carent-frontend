@@ -1,11 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { login, logout } from "../../actions/user.actions";
-import { Container, Form, FormGroup, Input } from "reactstrap";
+import { login } from "../../actions/user.actions";
+import { Form, FormGroup, Input } from "reactstrap";
 import classes from "./LoginPage.module.css";
 import MyButton from "../MyButton/MyButton";
-import axios from "../../axios-url";
 
 class LoginPage extends React.Component {
   constructor(props) {
@@ -36,7 +35,7 @@ class LoginPage extends React.Component {
   render() {
     const { email, password, submitted } = this.state;
     return (
-      <Container fluid={true}>
+      <div className={classes.Overlay}>
         <div className={classes.LoginPage_Wrapper}>
           <Form onSubmit={this.handleSubmit}>
             <FormGroup>
@@ -73,7 +72,7 @@ class LoginPage extends React.Component {
             </div>
           </Form>
         </div>
-      </Container>
+      </div>
     );
   }
 }

@@ -34,7 +34,7 @@ const Comment = props => {
           </Col>
           <Col md="9">
             <CardBody className={classes.CommentBody}>
-              <CardTitle>
+              <CardTitle style={{ marginBottom: "2px" }}>
                 <NavLink to={`/users/${props.author.id}`}>
                   {props.author.first_name + " " + props.author.last_name}
                 </NavLink>
@@ -47,7 +47,7 @@ const Comment = props => {
                   editing={false}
                 />
               </CardTitle>
-              <CardSubtitle>
+              <CardSubtitle style={{ fontSize: "14px", marginBottom: "15px" }}>
                 Account status:{" "}
                 {props.author.verified ? "verified" : "unverified"}
               </CardSubtitle>

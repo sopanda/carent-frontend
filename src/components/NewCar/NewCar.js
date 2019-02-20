@@ -21,6 +21,7 @@ import classes from "./NewCar.module.css";
 import styled from "styled-components";
 import { createNewCar, setCarPhoto } from "../../actions/cars.actions";
 import { SettingsTitle } from "../SettingsTitle/SettingsTitle";
+import CarAddressGeo from "../CarAddressGeo/CarAddressGeo";
 
 const UploadButton = styled(MyButton)`
   max-width: fit-content;
@@ -210,7 +211,6 @@ class NewCar extends Component {
                           <div className="help-block">model is required</div>
                         )}
                       </FormGroup>
-
                       <FormGroup>
                         <Input
                           type="text"
@@ -400,6 +400,7 @@ class NewCar extends Component {
                       onClick={this.photoUploadHandler}
                     />
                   </InputGroup>
+                  <CarAddressGeo />
                 </Container>
               </Col>
             )}

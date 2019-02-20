@@ -1,10 +1,17 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { Table } from "reactstrap";
 import styled from "styled-components";
 import DeleteCarModal from "../../components/Modals/DeleteCarModal/DeleteCarModal";
 import { connect } from "react-redux";
 import { deleteCarById } from "../../actions/cars.actions";
+import { Link } from "react-router-dom";
 import CommentCreationModal from "../Modals/CommentCreationModal/CommentCreationModal";
+
+const EmptyTable = styled.div`
+  text-align: center;
+  padding-bottom: 1rem;
+  margin: 5px;
+`;
 
 const TableHead = styled.th`
   border-top: none !important;
@@ -38,7 +45,7 @@ class MyTable extends Component {
 
   handleOrderRowClick = order => {
     this.commentChild.current.toggle();
-    // this.commentChild.current.handleOrder(order);
+    this.commentChild.current.handleOrder(order, this.props.type);
   };
 
   render() {
@@ -50,16 +57,25 @@ class MyTable extends Component {
             <TableRow
               key={i}
               onClick={
-                order.status === "complete"
+                order.status !== "complete" // DONT FORGET CHANGE TO ===
                   ? () => this.handleOrderRowClick(order)
                   : null
               }
             >
               <TableRowCell>{order.id}</TableRowCell>
-              <TableRowCell>{order.car}</TableRowCell>
-              <TableRowCell>@{order.username}</TableRowCell>
-              <TableRowCell>{order.start}</TableRowCell>
-              <TableRowCell>{order.till}</TableRowCell>
+              <TableRowCell>{order.model}</TableRowCell>
+              <TableRowCell>
+                <Link to={`/users/${order.renter.id}`}>
+                  @{order.renter.username}
+                </Link>
+              </TableRowCell>
+              <TableRowCell>
+                <Link to={`/users/${order.owner.id}`}>
+                  @{order.owner.username}
+                </Link>
+              </TableRowCell>
+              <TableRowCell>{order.start_date}</TableRowCell>
+              <TableRowCell>{order.end_date}</TableRowCell>
               <TableRowCell>{order.status}</TableRowCell>
             </TableRow>
           ))
@@ -83,7 +99,8 @@ class MyTable extends Component {
         <tr>
           <TableHead>#</TableHead>
           <TableHead>Car</TableHead>
-          <TableHead>User</TableHead>
+          <TableHead>Rented by</TableHead>
+          <TableHead>Owner</TableHead>
           <TableHead>From</TableHead>
           <TableHead>Till</TableHead>
           <TableHead>Status</TableHead>
@@ -97,15 +114,18 @@ class MyTable extends Component {
         </tr>
       );
     return (
-      <Table>
-        <thead>{headers}</thead>
-        <tbody>{information}</tbody>
-        <DeleteCarModal
-          ref={this.child}
-          deleteCarById={this.props.onDeleteCarById}
-        />
-        <CommentCreationModal ref={this.commentChild} />
-      </Table>
+      <Fragment>
+        <Table>
+          <thead>{headers}</thead>
+          <tbody>{information}</tbody>
+          <DeleteCarModal
+            ref={this.child}
+            deleteCarById={this.props.onDeleteCarById}
+          />
+          <CommentCreationModal ref={this.commentChild} />
+        </Table>
+        {!data.length && <EmptyTable>no data</EmptyTable>}
+      </Fragment>
     );
   }
 }

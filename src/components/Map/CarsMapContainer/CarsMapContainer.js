@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from "react";
 import CarsMap from "../CarsMap/CarsMap";
 import { connect } from "react-redux";
-import Spinner from "../../Spinner/Spinner";
 
 class CarsMapContainer extends Component {
   constructor(props) {
@@ -28,7 +27,7 @@ class CarsMapContainer extends Component {
   render() {
     const { cars } = this.props;
 
-    return cars.length !== 0 ? (
+    return (
       <Fragment>
         <CarsMap
           cars={cars}
@@ -41,8 +40,6 @@ class CarsMapContainer extends Component {
           closeOtherMarkers={this.closeOtherMarkers}
         />
       </Fragment>
-    ) : (
-      <Spinner />
     );
   }
 }

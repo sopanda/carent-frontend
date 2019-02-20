@@ -3,7 +3,6 @@ import { Card, CardBody, CardTitle, CardSubtitle } from "reactstrap";
 import classes from "./UserWidget.module.css";
 import MyButton from "../../MyButton/MyButton";
 import { connect } from "react-redux";
-import Spinner from "../../Spinner/Spinner";
 import { sendRequest } from "../../../actions/request.actions";
 import { toast, ToastContainer } from "react-toastify";
 import { NavLink } from "../../NavLink/NavLink";
@@ -38,7 +37,7 @@ class UserWidget extends Component {
   };
 
   render() {
-    return this.props.owner ? (
+    return (
       <Fragment>
         <Card className={classes.UserWidget_Card + " " + this.props.className}>
           <CardBody>
@@ -74,8 +73,6 @@ class UserWidget extends Component {
         </Card>
         <ToastContainer />
       </Fragment>
-    ) : (
-      <Spinner />
     );
   }
 }

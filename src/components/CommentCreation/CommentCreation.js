@@ -1,9 +1,11 @@
 import React, { Component, Fragment } from "react";
 import styled from "styled-components";
 import { Input } from "reactstrap";
+import { connect } from "react-redux";
 import classes from "./CommentCreation.module.css";
 import StarRatingComponent from "react-star-rating-component";
 import MyButton from "../MyButton/MyButton";
+import { addCarComment, addRenterComment } from "../../actions/comment.actions";
 
 const Stars = styled(StarRatingComponent)`
   font-size: 26px;
@@ -25,6 +27,26 @@ class CommentCreation extends Component {
 
   onStarClick = nextValue => {
     this.setState({ rating: nextValue });
+  };
+
+  onCommentSend = () => {
+    const {
+      data,
+      type,
+      onRenterComment,
+      onCarComment,
+      toggleModal
+    } = this.props;
+    const { rating, comment } = this.state;
+    let preparedComment = { rating: rating, text: comment };
+    if (type === "orders") {
+      onCarComment(data.id, preparedComment);
+      toggleModal();
+    }
+    if (type === "loans") {
+      onRenterComment(data.renter.id, preparedComment);
+      toggleModal();
+    }
   };
 
   render() {
@@ -49,7 +71,10 @@ class CommentCreation extends Component {
             className={classes.Comment_Input}
           />
           <div className={classes.Buttons}>
-            <MyButton title={"Send comment"} />
+            <MyButton
+              title={"Send comment"}
+              onClick={() => this.onCommentSend()}
+            />
             <MyButton onClick={this.props.toggleModal} title={"Cancel"} />
           </div>
         </div>
@@ -58,4 +83,15 @@ class CommentCreation extends Component {
   }
 }
 
-export default CommentCreation;
+const mapDispatchToProps = dispatch => {
+  return {
+    onCarComment: (car_id, comment) => dispatch(addCarComment(car_id, comment)),
+    onRenterComment: (renter_id, comment) =>
+      dispatch(addRenterComment(renter_id, comment))
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(CommentCreation);
