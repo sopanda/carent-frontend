@@ -31,19 +31,3 @@ export function addRenterComment(id, comment) {
       })
   };
 }
-
-export function finishBooking(id) {
-  return {
-    type: "FINISH_BOOKING",
-    payload: axios
-      .post(`/bookings/${id}/finish `)
-      .then(res => {
-        console.log(res.data);
-        return res.data;
-      })
-      .catch(function(error) {
-        console.log(error);
-        return error;
-      })
-  };
-}

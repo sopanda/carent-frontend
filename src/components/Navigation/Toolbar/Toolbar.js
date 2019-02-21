@@ -38,16 +38,6 @@ class Toolbar extends PureComponent {
             <NavItem>
               <NavLink
                 tag={navLink}
-                to="/contact"
-                exact
-                className={classes.Link}
-              >
-                Contact
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink
-                tag={navLink}
                 to="/login"
                 exact
                 className={classes.Link}

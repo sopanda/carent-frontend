@@ -49,3 +49,40 @@ export function createOffer(id, order) {
       })
   };
 }
+
+export function finishBooking(id) {
+  return dispatch => {
+    dispatch(finish(id));
+    setTimeout(() => dispatch(fetchDataForOrdersPanel()), 1200);
+  };
+
+  function finish(id) {
+    return {
+      type: "FINISH_BOOKING",
+      payload: axios
+        .get(`/bookings/${id}/finish`)
+        .then(res => {
+          console.log(res.data);
+          return res.data;
+        })
+        .catch(function(error) {
+          console.log(error);
+          return error;
+        })
+    };
+  }
+}
+
+export function fetchBookings() {
+  return {
+    type: "FETCH_MY_BOOKINGS",
+    payload: axios
+      .get(`/bookings`)
+      .then(res => {
+        return res.data;
+      })
+      .catch(function(error) {
+        console.log(error);
+      })
+  };
+}

@@ -25,7 +25,7 @@ const TabList = styled(UnstyledTabList)`
 `;
 
 const TabPanel = styled(UnstyledTabPanel)`
-  &:not(:first-child) {
+  &:not(:nth-child(2)) {
     background-color: #082336;
   }
   border-radius: 2%;

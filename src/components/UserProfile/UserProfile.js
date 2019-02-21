@@ -43,7 +43,7 @@ class UserProfile extends Component {
               {reviews.length !== 0 ? (
                 <Comments reviews={reviews} />
               ) : (
-                <Empty>You don't have any feedbacks</Empty>
+                <Empty>Feedback box is empty</Empty>
               )}
             </Col>
             <Col md="4">

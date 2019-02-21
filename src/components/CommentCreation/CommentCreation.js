@@ -6,6 +6,7 @@ import classes from "./CommentCreation.module.css";
 import StarRatingComponent from "react-star-rating-component";
 import MyButton from "../MyButton/MyButton";
 import { addCarComment, addRenterComment } from "../../actions/comment.actions";
+import { finishBooking } from "../../actions/orders.actions";
 
 const Stars = styled(StarRatingComponent)`
   font-size: 26px;
@@ -35,6 +36,7 @@ class CommentCreation extends Component {
       type,
       onRenterComment,
       onCarComment,
+      onFinishBooking,
       toggleModal
     } = this.props;
     const { rating, comment } = this.state;
@@ -45,6 +47,7 @@ class CommentCreation extends Component {
     }
     if (type === "loans") {
       onRenterComment(data.renter.id, preparedComment);
+      onFinishBooking(data.booking.id);
       toggleModal();
     }
   };
@@ -72,7 +75,11 @@ class CommentCreation extends Component {
           />
           <div className={classes.Buttons}>
             <MyButton
-              title={"Send comment"}
+              title={
+                this.props.type === "loans"
+                  ? "Send comment and finish order"
+                  : "Send comment"
+              }
               onClick={() => this.onCommentSend()}
             />
             <MyButton onClick={this.props.toggleModal} title={"Cancel"} />
@@ -87,7 +94,8 @@ const mapDispatchToProps = dispatch => {
   return {
     onCarComment: (car_id, comment) => dispatch(addCarComment(car_id, comment)),
     onRenterComment: (renter_id, comment) =>
-      dispatch(addRenterComment(renter_id, comment))
+      dispatch(addRenterComment(renter_id, comment)),
+    onFinishBooking: id => dispatch(finishBooking(id))
   };
 };
 

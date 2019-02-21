@@ -28,7 +28,7 @@ const OrderDescription = props => {
     mileage,
     transmission
   } = props.offer;
-  const { road, house_number, city, postcode } = props.offer.address;
+  const { postcode, road, house_number, city } = props.offer.address || "";
   const { isCarPage } = props || false;
   return (
     <Fragment>
@@ -52,7 +52,7 @@ const OrderDescription = props => {
             <p style={{ margin: "0" }}>
               {!isCarPage && `Price: ${daily_price}$ per day `}
             </p>
-            {`Address: ${road} ${house_number}, ${city}, ${postcode} `}
+            {`Address: ${road} ${house_number} ${city} ${postcode} `}
           </CardSubtitle>
           <div className={classes.Columns_Wrapper}>
             <Row>

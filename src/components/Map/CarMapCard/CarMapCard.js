@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { PureComponent, Fragment } from "react";
 import {
   Card,
   CardImg,
@@ -57,7 +57,7 @@ const Img = styled(CardImg)`
   height: auto;
 `;
 
-class CarMapCard extends Component {
+class CarMapCard extends PureComponent {
   render() {
     const {
       model,
@@ -68,7 +68,7 @@ class CarMapCard extends Component {
       id
     } = this.props.car;
     const { first_name, last_name, id: owner_id } = this.props.car.owner;
-    const { road, house_number } = this.props.car.address;
+    const { road, house_number } = this.props.car.address || "";
     return (
       <Fragment>
         <MyCard className={classes.Card}>

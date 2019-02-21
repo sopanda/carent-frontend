@@ -35,11 +35,6 @@ export function comment(state = initialState, action) {
         ...state,
         addingComment: false
       };
-    case "FINISH_BOOKING_FULFILLED":
-      return {
-        ...state,
-        finishBookingMsg: action.payload
-      };
     default:
       return state;
   }

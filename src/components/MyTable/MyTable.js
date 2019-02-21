@@ -50,6 +50,7 @@ class MyTable extends Component {
 
   render() {
     const { data, type } = this.props;
+    console.log(data);
     let information;
     if (type !== "cars") {
       information = data.length
@@ -57,13 +58,15 @@ class MyTable extends Component {
             <TableRow
               key={i}
               onClick={
-                order.status !== "complete" // DONT FORGET CHANGE TO ===
+                order.status !== "complete"
                   ? () => this.handleOrderRowClick(order)
                   : null
               }
             >
-              <TableRowCell>{order.id}</TableRowCell>
-              <TableRowCell>{order.model}</TableRowCell>
+              <TableRowCell>{order.booking.id}</TableRowCell>
+              <TableRowCell>
+                <Link to={`/cars/${order.id}`}>{order.model}</Link>
+              </TableRowCell>
               <TableRowCell>
                 <Link to={`/users/${order.renter.id}`}>
                   @{order.renter.username}
@@ -76,7 +79,8 @@ class MyTable extends Component {
               </TableRowCell>
               <TableRowCell>{order.start_date}</TableRowCell>
               <TableRowCell>{order.end_date}</TableRowCell>
-              <TableRowCell>{order.status}</TableRowCell>
+              <TableRowCell>{order.booking.aasm_state}</TableRowCell>
+              <TableRowCell>{order.booking.price}$</TableRowCell>
             </TableRow>
           ))
         : null;
@@ -99,11 +103,12 @@ class MyTable extends Component {
         <tr>
           <TableHead>#</TableHead>
           <TableHead>Car</TableHead>
-          <TableHead>Rented by</TableHead>
+          <TableHead>Renter</TableHead>
           <TableHead>Owner</TableHead>
           <TableHead>From</TableHead>
           <TableHead>Till</TableHead>
           <TableHead>Status</TableHead>
+          <TableHead>Total</TableHead>
         </tr>
       ) : (
         <tr>

@@ -8,7 +8,6 @@ export default class Comments extends Component {
   };
   render() {
     const { reviews } = this.props;
-    console.log(reviews);
     let comments =
       reviews.length !== 0
         ? reviews.map(comment => {

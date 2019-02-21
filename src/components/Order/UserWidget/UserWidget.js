@@ -56,6 +56,7 @@ class UserWidget extends Component {
             </CardTitle>
             <CardSubtitle>
               {`Email: ${this.props.owner.email}`} <br />{" "}
+              {`Phone: ${this.props.owner.phone_number}`} <br />{" "}
               {`Account status: ${
                 this.props.owner.verified ? "verified" : "unverified"
               }`}

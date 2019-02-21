@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { PureComponent, Fragment } from "react";
 import { Container, Row, Col } from "reactstrap";
 import {
   Tab,
@@ -17,10 +17,12 @@ import { fetchMyCars } from "../../../actions/cars.actions";
 import { SettingsTitle } from "../../../components/SettingsTitle/SettingsTitle";
 import Spinner from "../../../components/Spinner/Spinner";
 import { fetchMyRequests } from "../../../actions/request.actions";
+import { fetchBookings } from "../../../actions/orders.actions";
 import { fetchDataForOrdersPanel } from "../../../actions/orders.actions";
 import styled from "styled-components";
 import MyButton from "../../../components/MyButton/MyButton";
 import { Link } from "react-router-dom";
+import HistoryPanel from "./HistoryPanel/HistoryPanel";
 
 const NoRequestAlert = styled.div`
   text-align: center;
@@ -33,22 +35,13 @@ const AdminLink = styled(Link)`
   margin: 10px;
 `;
 
-class SettingsTabs extends Component {
+class SettingsTabs extends PureComponent {
   componentDidMount = () => {
     this.props.onFetchProfile();
     this.props.onFetchMyCars();
     this.props.onFetchRequests();
     this.props.onFetchDataForOrdersPanel();
-  };
-
-  shouldComponentUpdate = nextProps => {
-    return (
-      nextProps.myCars !== this.props.myCars ||
-      nextProps.requests !== this.props.requests ||
-      nextProps.profile !== this.props.profile ||
-      nextProps.myLoans !== this.props.myLoans ||
-      nextProps.myOrders !== this.props.myOrders
-    );
+    this.props.onFetchBookings();
   };
 
   render() {
@@ -60,7 +53,8 @@ class SettingsTabs extends Component {
       myLoans,
       myOrders,
       isLoansFetched,
-      isOrdersFetched
+      isOrdersFetched,
+      bookings
     } = this.props;
     return (
       <Tabs>
@@ -72,6 +66,7 @@ class SettingsTabs extends Component {
                 <Tab>Requests</Tab>
                 <Tab>My cars</Tab>
                 <Tab>Your Account</Tab>
+                <Tab>History</Tab>
               </TabList>
               {profile.role === "admin" ? (
                 <AdminLink to={`/admin`}>
@@ -105,6 +100,9 @@ class SettingsTabs extends Component {
               <TabPanel>
                 <VerificationPanel user={profile} />
               </TabPanel>
+              <TabPanel>
+                <HistoryPanel bookings={bookings} />
+              </TabPanel>
             </Col>
           </Row>
         </Container>
@@ -122,7 +120,8 @@ const mapStateToProps = state => {
     myLoans: state.orders.loans,
     myOrders: state.orders.orders,
     isLoansFetched: state.orders.fetchedLoans,
-    isOrdersFetched: state.orders.fetchedOrders
+    isOrdersFetched: state.orders.fetchedOrders,
+    bookings: state.orders.bookings
   };
 };
 
@@ -131,7 +130,8 @@ const mapDispatchToProps = dispatch => {
     onFetchProfile: () => dispatch(fetchProfile()),
     onFetchMyCars: () => dispatch(fetchMyCars()),
     onFetchRequests: () => dispatch(fetchMyRequests()),
-    onFetchDataForOrdersPanel: () => dispatch(fetchDataForOrdersPanel())
+    onFetchDataForOrdersPanel: () => dispatch(fetchDataForOrdersPanel()),
+    onFetchBookings: () => dispatch(fetchBookings())
   };
 };
 

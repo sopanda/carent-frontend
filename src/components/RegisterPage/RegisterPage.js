@@ -16,7 +16,8 @@ class RegisterPage extends Component {
         last_name: "",
         email: "",
         username: "",
-        password: ""
+        password: "",
+        phone_number: ""
       },
       submitted: false
     };
@@ -42,7 +43,8 @@ class RegisterPage extends Component {
       user.last_name &&
       user.username &&
       user.password &&
-      user.email
+      user.email &&
+      user.phone
     ) {
       this.props.onRegister(user);
     }
@@ -118,6 +120,19 @@ class RegisterPage extends Component {
               />
               {submitted && !user.password && (
                 <div className="help-block">Password is required</div>
+              )}
+            </FormGroup>
+            <FormGroup>
+              <Input
+                type="text"
+                name="phone_number"
+                placeholder="Phone"
+                value={user.phone_number}
+                onChange={this.handleChange}
+                className={classes.RegisterPage_Input + " form-control-lg"}
+              />
+              {submitted && !user.phone && (
+                <div className="help-block">phone is required</div>
               )}
             </FormGroup>
             <div className={classes.RegisterPage_ButtonGroup}>
