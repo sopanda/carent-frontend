@@ -171,3 +171,80 @@ export function uploadDocuments(doc) {
       })
   };
 }
+
+export function fetchAllUsers() {
+  return {
+    type: "FETCH_ALL_USERS",
+    payload: axios
+      .get(`/users`)
+      .then(res => {
+        return res.data;
+      })
+      .catch(function(error) {
+        console.log(error);
+      })
+  };
+}
+
+export function deleteUserById(id) {
+  return dispatch => {
+    dispatch(deleteUser(id));
+    setTimeout(() => dispatch(fetchAllUsers()), 1100);
+  };
+
+  function deleteUser(id) {
+    return {
+      type: "DELETE_USER_BY_ID",
+      payload: axios
+        .delete(`/users/${id}`)
+        .then(res => {
+          return res.data;
+        })
+        .catch(function(error) {
+          console.log(error);
+        })
+    };
+  }
+}
+
+export function verifyUser(id) {
+  return dispatch => {
+    dispatch(verify(id));
+    setTimeout(() => dispatch(fetchAllUsers()), 1100);
+  };
+
+  function verify(id) {
+    return {
+      type: "VERIFY_USER",
+      payload: axios
+        .get(`/users/${id}/verify`)
+        .then(res => {
+          return res.data;
+        })
+        .catch(function(error) {
+          console.log(error);
+        })
+    };
+  }
+}
+
+export function rejectUserVerification(id) {
+  return dispatch => {
+    dispatch(reject(id));
+    setTimeout(() => dispatch(fetchAllUsers()), 1100);
+  };
+
+  function reject(id) {
+    return {
+      type: "REJECT_USER",
+      payload: axios
+        .get(`/users/${id}/reject`)
+        .then(res => {
+          return res.data;
+        })
+        .catch(function(error) {
+          console.log(error);
+        })
+    };
+  }
+}

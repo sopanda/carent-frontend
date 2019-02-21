@@ -29,6 +29,7 @@ const OrderDescription = props => {
     transmission
   } = props.offer;
   const { road, house_number, city, postcode } = props.offer.address;
+  const { isCarPage } = props || false;
   return (
     <Fragment>
       <Card className={classes.Card}>
@@ -45,9 +46,13 @@ const OrderDescription = props => {
         <CardBody>
           <CardTitle>{model}</CardTitle>
           <CardSubtitle>
-            {`Available: ${start_date} - ${end_date}`} <br />
-            {`Price: ${daily_price}$ per day`} <br />
-            {`Pick up address: ${road} ${house_number}, ${city}, ${postcode} `}
+            <p style={{ margin: "0" }}>
+              {!isCarPage && `Available: ${start_date} - ${end_date}`}
+            </p>
+            <p style={{ margin: "0" }}>
+              {!isCarPage && `Price: ${daily_price}$ per day `}
+            </p>
+            {`Address: ${road} ${house_number}, ${city}, ${postcode} `}
           </CardSubtitle>
           <div className={classes.Columns_Wrapper}>
             <Row>
@@ -72,9 +77,11 @@ const OrderDescription = props => {
               </Col>
             </Row>
           </div>
-          <CardText className={classes.Summary}>
-            Offer description: <br /> {description}
-          </CardText>
+          {!isCarPage && (
+            <CardText className={classes.Summary}>
+              Offer description: <br /> {description}
+            </CardText>
+          )}
         </CardBody>
       </Card>
     </Fragment>

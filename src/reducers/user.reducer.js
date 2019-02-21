@@ -4,9 +4,12 @@ const initialState = {
   fetchedUser: false,
   fetchedUserReviews: false,
   fetchedProfile: false,
+  fetchingAllUsers: false,
+  fetchedUsers: false,
   userInfo: {},
   userReviews: [],
   profile: {},
+  role: "user",
   myLocation: {}
 };
 export function user(state = initialState, action) {
@@ -60,7 +63,8 @@ export function user(state = initialState, action) {
         ...state,
         fetchingProfile: false,
         fetchedProfile: true,
-        profile: action.payload
+        profile: action.payload,
+        role: action.payload.role
       };
     case "FETCH_PROFILE_REJECTED":
       return {
@@ -98,6 +102,38 @@ export function user(state = initialState, action) {
       return {
         ...state,
         uploadingDocument: false
+      };
+    case "FETCH_ALL_USERS_PENDING":
+      return {
+        ...state,
+        fetchingAllUsers: true
+      };
+    case "FETCH_ALL_USERS_FULFILLED":
+      return {
+        ...state,
+        fetchingAllUsers: false,
+        fetchedUsers: true,
+        users: action.payload
+      };
+    case "FETCH_ALL_USERS_REJECTED":
+      return {
+        ...state,
+        fetchingAllUsers: false
+      };
+    case "DELETE_USER_BY_ID_FULFILLED":
+      return {
+        ...state,
+        deleteUserMsg: action.payload
+      };
+    case "REJECT_USER_FULFILLED":
+      return {
+        ...state,
+        rejectedVerificationMsg: action.payload
+      };
+    case "VERIFY_USER_FULFILLED":
+      return {
+        ...state,
+        verifyUserMsg: action.payload
       };
     default:
       return state;

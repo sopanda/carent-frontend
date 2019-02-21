@@ -19,10 +19,18 @@ import Spinner from "../../../components/Spinner/Spinner";
 import { fetchMyRequests } from "../../../actions/request.actions";
 import { fetchDataForOrdersPanel } from "../../../actions/orders.actions";
 import styled from "styled-components";
+import MyButton from "../../../components/MyButton/MyButton";
+import { Link } from "react-router-dom";
 
 const NoRequestAlert = styled.div`
   text-align: center;
   background: #001220;
+`;
+
+const AdminLink = styled(Link)`
+  text-align: center;
+  display: block;
+  margin: 10px;
 `;
 
 class SettingsTabs extends Component {
@@ -65,6 +73,11 @@ class SettingsTabs extends Component {
                 <Tab>My cars</Tab>
                 <Tab>Your Account</Tab>
               </TabList>
+              {profile.role === "admin" ? (
+                <AdminLink to={`/admin`}>
+                  <MyButton title={"Admin panel"} />
+                </AdminLink>
+              ) : null}
             </Col>
             <Col md="10">
               <TabPanel>

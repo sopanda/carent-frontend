@@ -13,6 +13,8 @@ import { history } from "./helpers/history";
 import UserProfile from "./components/UserProfile/UserProfile";
 import NewCar from "./components/NewCar/NewCar";
 import NewOrder from "./components/NewOrder/NewOrder";
+import CarPage from "./components/CarPage/CarPage";
+import AdminPage from "./components/AdminPage/AdminPage";
 
 class App extends Component {
   render() {
@@ -26,6 +28,8 @@ class App extends Component {
               <PrivateRoute exact path="/" component={Home} />
               <PrivateRoute exact path="/order/:id" component={Order} />
               <PrivateRoute exact path="/users/:id" component={UserProfile} />
+              <PrivateRoute exact path="/cars/:id" component={CarPage} />
+              <PrivateRoute exact path="/admin" component={AdminPage} />
               <PrivateRoute exact path="/new_car" component={NewCar} />
               <PrivateRoute exact path="/new_order" component={NewOrder} />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />

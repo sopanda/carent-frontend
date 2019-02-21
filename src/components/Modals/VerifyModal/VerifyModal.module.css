@@ -1,0 +1,26 @@
+.Modal > div {
+  background-color: #082336;
+  border: 1px solid #3de6af;
+}
+
+.ModalBody,
+.ModalFooter {
+  border: none !important;
+  text-align: center;
+}
+
+.ModalBody {
+  font-size: 16px;
+  text-align: center;
+  padding-top: 50px !important;
+}
+
+.ModalFooter button {
+  max-width: fit-content;
+}
+
+.Image {
+  width: 100%;
+  max-height: 300px;
+  height: 100%;
+}

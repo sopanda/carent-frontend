@@ -4,6 +4,7 @@ import ReactDOM from "react-dom";
 import classes from "./DeleteCarModal.module.css";
 import MyButton from "../../MyButton/MyButton";
 import { toast, ToastContainer } from "react-toastify";
+import { Link } from "react-router-dom";
 
 class DeleteCarModal extends Component {
   constructor(props) {
@@ -67,7 +68,8 @@ class DeleteCarModal extends Component {
       mileage,
       photo,
       transmission,
-      air_conditioner
+      air_conditioner,
+      id
     } = car || "";
 
     return car
@@ -119,6 +121,9 @@ class DeleteCarModal extends Component {
               </div>
             </ModalBody>
             <ModalFooter className={classes.ModalFooter}>
+              <Link to={`/cars/${id}`}>
+                <MyButton title={"Show car page"} />
+              </Link>
               <MyButton
                 onClick={() => this.handleDeleteCar(car.id, status)}
                 title={"Delete car"}

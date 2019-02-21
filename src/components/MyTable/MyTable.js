@@ -13,16 +13,16 @@ const EmptyTable = styled.div`
   margin: 5px;
 `;
 
-const TableHead = styled.th`
+export const TableHead = styled.th`
   border-top: none !important;
   border-bottom: 1px solid #3de6af !important;
 `;
 
-const TableRowCell = styled.th`
+export const TableRowCell = styled.th`
   border-top: 1px solid #3de6af !important;
 `;
 
-const TableRow = styled.tr`
+export const TableRow = styled.tr`
   &:hover {
     background-color: #32bb8d;
     -webkit-transition: 0.3s;
