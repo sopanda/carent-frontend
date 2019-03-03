@@ -36,13 +36,14 @@ class CommentCreation extends Component {
       type,
       onRenterComment,
       onCarComment,
+      car,
       onFinishBooking,
       toggleModal
     } = this.props;
     const { rating, comment } = this.state;
     let preparedComment = { rating: rating, text: comment };
     if (type === "orders") {
-      onCarComment(data.id, preparedComment);
+      onCarComment(car, preparedComment);
       toggleModal();
     }
     if (type === "loans") {

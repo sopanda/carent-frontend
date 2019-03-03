@@ -7,7 +7,7 @@ import { deleteCarById } from "../../actions/cars.actions";
 import { Link } from "react-router-dom";
 import CommentCreationModal from "../Modals/CommentCreationModal/CommentCreationModal";
 
-const EmptyTable = styled.div`
+export const EmptyTable = styled.div`
   text-align: center;
   padding-bottom: 1rem;
   margin: 5px;

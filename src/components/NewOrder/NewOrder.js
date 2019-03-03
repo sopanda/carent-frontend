@@ -95,77 +95,81 @@ class NewOrder extends Component {
     return (
       <Container fluid={true}>
         <Row>
-          <div className={classes.NewOrder_Wrapper}>
-            <Title>Create new order</Title>
-            <Form onSubmit={this.handleSubmit}>
-              <Container>
-                <Row>
-                  <Col md="12">
-                    <FormGroup>
-                      <Label for="start_date">From</Label>
-                      <DatePickerCustom
-                        selected={this.state.start_date}
-                        onChange={this.handleChangeStart}
-                        placeholderText="Choose start date"
-                        showTimeSelect
-                        timeFormat="HH:mm"
-                        injectTimes={[
-                          setHours(setMinutes(new Date(), 1), 0),
-                          setHours(setMinutes(new Date(), 5), 12),
-                          setHours(setMinutes(new Date(), 59), 23)
-                        ]}
-                        dateFormat="MMMM d, yyyy h:mm aa"
+          <Col>
+            <div className={classes.NewOrder_Wrapper}>
+              <Title>Create new order</Title>
+              <Form onSubmit={this.handleSubmit}>
+                <Container>
+                  <Row>
+                    <Col md="12">
+                      <FormGroup>
+                        <Label for="start_date">From</Label>
+                        <DatePickerCustom
+                          selected={this.state.start_date}
+                          onChange={this.handleChangeStart}
+                          placeholderText="Choose start date"
+                          showTimeSelect
+                          timeFormat="HH:mm"
+                          injectTimes={[
+                            setHours(setMinutes(new Date(), 1), 0),
+                            setHours(setMinutes(new Date(), 5), 12),
+                            setHours(setMinutes(new Date(), 59), 23)
+                          ]}
+                          dateFormat="MMMM d, yyyy h:mm aa"
+                        />
+                        {submitted && !start_date && (
+                          <div className="help-block">
+                            start_date is required
+                          </div>
+                        )}
+                      </FormGroup>
+                      <FormGroup>
+                        <Label for="end_date">Till</Label>
+                        <DatePickerCustom
+                          selected={this.state.end_date}
+                          onChange={this.handleChangeEnd}
+                          showTimeSelect
+                          placeholderText="Choose end date"
+                          timeFormat="HH:mm"
+                          injectTimes={[
+                            setHours(setMinutes(new Date(), 1), 0),
+                            setHours(setMinutes(new Date(), 5), 12),
+                            setHours(setMinutes(new Date(), 59), 23)
+                          ]}
+                          dateFormat="MMMM d, yyyy h:mm aa"
+                        />
+                        {submitted && !end_date && (
+                          <div className="help-block">end_date is required</div>
+                        )}
+                      </FormGroup>
+                      <FormGroup>
+                        <Label>Choose available car</Label>
+                        <CarSelection
+                          options={myCars}
+                          handleCarId={this.handleCar}
+                        />
+                      </FormGroup>
+                      <FormGroup>
+                        <Label for="description">Order description</Label>
+                        <Input
+                          type="textarea"
+                          name="description"
+                          placeholder="Write description"
+                          value={description}
+                          onChange={this.handleChange}
+                          className={classes.NewOrder_Input}
+                        />
+                      </FormGroup>
+                      <MyButton
+                        title="Create order"
+                        className={classes.Create_Button}
                       />
-                      {submitted && !start_date && (
-                        <div className="help-block">start_date is required</div>
-                      )}
-                    </FormGroup>
-                    <FormGroup>
-                      <Label for="end_date">Till</Label>
-                      <DatePickerCustom
-                        selected={this.state.end_date}
-                        onChange={this.handleChangeEnd}
-                        showTimeSelect
-                        placeholderText="Choose end date"
-                        timeFormat="HH:mm"
-                        injectTimes={[
-                          setHours(setMinutes(new Date(), 1), 0),
-                          setHours(setMinutes(new Date(), 5), 12),
-                          setHours(setMinutes(new Date(), 59), 23)
-                        ]}
-                        dateFormat="MMMM d, yyyy h:mm aa"
-                      />
-                      {submitted && !end_date && (
-                        <div className="help-block">end_date is required</div>
-                      )}
-                    </FormGroup>
-                    <FormGroup>
-                      <Label>Choose available car</Label>
-                      <CarSelection
-                        options={myCars}
-                        handleCarId={this.handleCar}
-                      />
-                    </FormGroup>
-                    <FormGroup>
-                      <Label for="description">Order description</Label>
-                      <Input
-                        type="textarea"
-                        name="description"
-                        placeholder="Write description"
-                        value={description}
-                        onChange={this.handleChange}
-                        className={classes.NewOrder_Input}
-                      />
-                    </FormGroup>
-                    <MyButton
-                      title="Create order"
-                      className={classes.Create_Button}
-                    />
-                  </Col>
-                </Row>
-              </Container>
-            </Form>
-          </div>
+                    </Col>
+                  </Row>
+                </Container>
+              </Form>
+            </div>
+          </Col>
         </Row>
         <ToastContainer />
       </Container>

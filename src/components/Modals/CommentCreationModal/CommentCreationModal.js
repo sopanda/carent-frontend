@@ -10,7 +10,8 @@ class CommentCreationModal extends Component {
     this.state = {
       modal: false,
       data: null,
-      type: null
+      type: null,
+      car_id: null
     };
   }
 
@@ -29,12 +30,16 @@ class CommentCreationModal extends Component {
     }));
   };
 
+  handleBooking = (booking, type) => {
+    this.setState({ car_id: booking.car.id, type: type });
+  };
+
   handleOrder = (order, type) => {
     this.setState({ data: order, type: type });
   };
 
   render() {
-    const { data, type } = this.state;
+    const { data, type, car_id } = this.state;
     return ReactDOM.createPortal(
       <Modal
         isOpen={this.state.modal}
@@ -43,7 +48,12 @@ class CommentCreationModal extends Component {
         className={classes.Modal}
       >
         <ModalBody className={classes.ModalBody}>
-          <CommentCreation toggleModal={this.toggle} data={data} type={type} />
+          <CommentCreation
+            toggleModal={this.toggle}
+            data={data}
+            type={type}
+            car={car_id}
+          />
         </ModalBody>
       </Modal>,
       this.root

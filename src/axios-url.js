@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const defaultOptions = {
-  baseURL: "https://carrent-api.herokuapp.com/",
+  baseURL: "https://carent-api.herokuapp.com/",
   headers: {
     "Content-Type": "application/json"
   }
