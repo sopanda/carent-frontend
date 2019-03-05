@@ -29,8 +29,12 @@ class Home extends Component {
       this.props.onSetMyLocation(this.state.location);
       setTimeout(() => {
         this.props.onFetchCars(this.state.location);
-      }, 500);
+      }, 1000);
     }
+  }
+
+  componentDidMount() {
+    this.props.onFetchCars(this.state.location);
   }
 
   render() {
