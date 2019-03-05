@@ -1,8 +1,8 @@
-import React, { Component, Fragment } from "react";
+import React, { PureComponent, Fragment } from "react";
 import CarsMap from "../CarsMap/CarsMap";
 import { connect } from "react-redux";
 
-class CarsMapContainer extends Component {
+class CarsMapContainer extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {

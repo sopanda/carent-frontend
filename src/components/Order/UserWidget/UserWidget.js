@@ -37,29 +37,36 @@ class UserWidget extends Component {
   };
 
   render() {
+    const {
+      photo,
+      id,
+      first_name,
+      last_name,
+      email,
+      phone_number,
+      verified
+    } = this.props.owner;
+
     return (
       <Fragment>
         <Card className={classes.UserWidget_Card + " " + this.props.className}>
           <CardBody>
             <div
               style={{
-                backgroundImage: this.props.owner.photo
-                  ? `url(${this.props.owner.photo})`
+                backgroundImage: photo
+                  ? `url(${photo})`
                   : `url("https://liains.com/wp-content/uploads/sites/13/2015/07/no-image-300x300.png")`
               }}
               className={classes.Profile_Image}
             />
             <CardTitle>
-              <NavLink to={`/users/${this.props.owner.id}`}>{`${
-                this.props.owner.first_name
-              } ${this.props.owner.last_name}`}</NavLink>
+              <NavLink
+                to={`/users/${id}`}
+              >{`${first_name} ${last_name}`}</NavLink>
             </CardTitle>
             <CardSubtitle>
-              {`Email: ${this.props.owner.email}`} <br />{" "}
-              {`Phone: ${this.props.owner.phone_number}`} <br />{" "}
-              {`Account status: ${
-                this.props.owner.verified ? "verified" : "unverified"
-              }`}
+              {`Email: ${email}`} <br /> {`Phone: ${phone_number}`} <br />{" "}
+              {`Account status: ${verified ? "verified" : "unverified"}`}
             </CardSubtitle>
             {this.props.btnTitle && (
               <div className={classes.SendBtn}>

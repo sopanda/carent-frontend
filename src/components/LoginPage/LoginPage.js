@@ -5,6 +5,7 @@ import { login } from "../../actions/user.actions";
 import { Form, FormGroup, Input } from "reactstrap";
 import classes from "./LoginPage.module.css";
 import MyButton from "../MyButton/MyButton";
+import Spinner from "../Spinner/Spinner";
 
 class LoginPage extends React.Component {
   constructor(props) {
@@ -27,14 +28,13 @@ class LoginPage extends React.Component {
     const { email, password } = this.state;
     if (email && password) {
       let user = { auth: { email: email, password: password } };
-      console.log(user);
       this.props.onLogin(user);
     }
   };
 
   render() {
-    const { email, password, submitted } = this.state;
-    return (
+    const { email, password, submitted, loggingIn } = this.state;
+    return !loggingIn ? (
       <div className={classes.Overlay}>
         <div className={classes.LoginPage_Wrapper}>
           <Form onSubmit={this.handleSubmit}>
@@ -73,13 +73,16 @@ class LoginPage extends React.Component {
           </Form>
         </div>
       </div>
+    ) : (
+      <Spinner />
     );
   }
 }
 
 function mapStateToProps(state) {
   return {
-    loggedIn: state.authentication.loggedIn
+    loggedIn: state.authentication.loggedIn,
+    loggingIn: state.authentication.loggingIn
   };
 }
 

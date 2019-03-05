@@ -44,7 +44,7 @@ class RegisterPage extends Component {
       user.username &&
       user.password &&
       user.email &&
-      user.phone
+      user.phone_number
     ) {
       this.props.onRegister(user);
     }
@@ -131,7 +131,7 @@ class RegisterPage extends Component {
                 onChange={this.handleChange}
                 className={classes.RegisterPage_Input + " form-control-lg"}
               />
-              {submitted && !user.phone && (
+              {submitted && !user.phone_number && (
                 <div className="help-block">phone is required</div>
               )}
             </FormGroup>

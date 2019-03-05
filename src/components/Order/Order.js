@@ -3,10 +3,22 @@ import OfferDescription from "./OrderDescription/OrderDescription";
 import UserWidget from "./UserWidget/UserWidget";
 import { Container, Col, Row } from "reactstrap";
 import Comments from "../Comments/Comments";
-import classes from "./Order.module.css";
+import styled from "styled-components";
 import { connect } from "react-redux";
 import { fetchOffer } from "../../actions/offer.actions";
 import Spinner from "../Spinner/Spinner";
+
+const OfferWrapper = styled.div`
+  padding: 30px 0;
+`;
+
+const WidgetWrapper = styled.div`
+  @media only screen and (max-width: 767px) {
+    margin-top: 20px;
+    justify-content: center;
+    display: flex;
+  }
+`;
 
 class Order extends Component {
   componentDidMount() {
@@ -25,21 +37,23 @@ class Order extends Component {
     const { offer, reviews, isFetchedOffer, isFetchedReviews } = this.props;
     return isFetchedOffer && isFetchedReviews ? (
       <Container>
-        <div className={classes.Offer_Wrapper}>
+        <OfferWrapper>
           <Row>
             <Col md="8">
               <OfferDescription offer={offer} />
               <Comments reviews={reviews} />
             </Col>
             <Col md="4">
-              <UserWidget
-                btnTitle="Send request"
-                owner={offer.owner}
-                carId={offer.id}
-              />
+              <WidgetWrapper>
+                <UserWidget
+                  btnTitle="Send request"
+                  owner={offer.owner}
+                  carId={offer.id}
+                />
+              </WidgetWrapper>
             </Col>
           </Row>
-        </div>
+        </OfferWrapper>
       </Container>
     ) : (
       <Spinner />

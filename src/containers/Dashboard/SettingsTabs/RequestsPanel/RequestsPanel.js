@@ -21,11 +21,12 @@ const NavLink = styled(Link)`
 `;
 
 const RequestWrapper = styled.div`
-  max-width: 350px;
+  max-width: 300px;
   border: 1px solid rgb(61, 230, 175);
   background-color: #082336;
   padding: 10px 0;
   border-radius: 4%;
+  margin: 10px;
 `;
 
 const ListItem = styled(ListGroupItem)`
@@ -39,6 +40,7 @@ const DecisionButton = styled(MyButton)`
 
 const ButtonGroup = styled.div`
   text-align: center;
+  margin: 3px;
 `;
 
 class RequestsPanel extends Component {
@@ -51,7 +53,7 @@ class RequestsPanel extends Component {
       <Fragment>
         {orders.length
           ? orders.map((order, i) => (
-              <Col md="6" key={i}>
+              <Col key={i}>
                 <RequestWrapper>
                   <ListGroup>
                     <ListItem>Order: {`#${order.id}`}</ListItem>
