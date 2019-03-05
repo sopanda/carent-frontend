@@ -9,8 +9,7 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      /* Lviv coordination */
-      location: { latitude: 49.83826, longitude: 24.02324, range: 50 }
+      location: { latitude: 50.041187, longitude: 21.999121, range: 50 }
     };
   }
 
