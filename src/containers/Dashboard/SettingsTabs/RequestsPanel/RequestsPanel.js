@@ -53,7 +53,7 @@ class RequestsPanel extends Component {
       <Fragment>
         {orders.length
           ? orders.map((order, i) => (
-              <Col key={i}>
+              <Col sm="12" key={i}>
                 <RequestWrapper>
                   <ListGroup>
                     <ListItem>Order: {`#${order.id}`}</ListItem>

@@ -73,7 +73,7 @@ class UserWidget extends Component {
                 <MyButton
                   title={this.props.btnTitle}
                   onClick={() => this.sendRequest(this.props.carId)}
-                  disabled={this.state.sent ? true : false}
+                  disabled={this.state.sent}
                 />
               </div>
             )}

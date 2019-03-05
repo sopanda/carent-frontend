@@ -16,7 +16,14 @@ const Empty = styled.div`
 `;
 
 const UserWidgetProfile = styled(UserWidget)`
-  margin: 20px 0;
+  margin: 20px auto;
+`;
+
+const CustomRow = styled(Row)`
+  @media only screen and (max-width: 767px) {
+    flex-direction: column-reverse;
+    justify-content: center;
+  }
 `;
 
 class UserProfile extends Component {
@@ -38,7 +45,7 @@ class UserProfile extends Component {
     return isFetchedUser && isFetchedReviews ? (
       <Fragment>
         <Container>
-          <Row>
+          <CustomRow>
             <Col md="8">
               {reviews.length !== 0 ? (
                 <Comments reviews={reviews} />
@@ -49,7 +56,7 @@ class UserProfile extends Component {
             <Col md="4">
               <UserWidgetProfile owner={user} />
             </Col>
-          </Row>
+          </CustomRow>
         </Container>
       </Fragment>
     ) : (
