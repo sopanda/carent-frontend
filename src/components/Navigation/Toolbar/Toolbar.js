@@ -35,7 +35,7 @@ class Toolbar extends PureComponent {
         <NavbarToggler className={classes.IconToggle} onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className={classes.List + " ml-auto"} navbar>
-            <NavItem>
+            <NavItem onClick={this.toggle}>
               <NavLink
                 tag={navLink}
                 to="/login"

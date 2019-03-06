@@ -29,6 +29,7 @@ const TabPanel = styled(UnstyledTabPanel)`
     background-color: #082336;
   }
   border-radius: 2%;
+  overflow: auto;
 `;
 
 const Tab = styled(UnstyledTab).attrs({
